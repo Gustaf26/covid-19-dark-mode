@@ -1,5 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap");
+
 .App {
   text-align: center;
+  height: 93vh;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+body {
+  /* background: url("sea.jpg") fixed; */
+  background-position: 0 0 0 0;
 }
 
 .App-logo {
@@ -7,32 +16,769 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #ffffff;
+  min-height: 100px;
+  max-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(6px + 2vmin);
+  color: black;
+  padding-top: 1rem;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: calc(14px + 2vmin);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #eff3f7;
+}
+
+h3 {
+  color: rgb(94, 96, 97);
+}
+
+.usefulLinks {
+  margin: 1rem 1rem;
+  min-width: 300px;
+  list-style-type: none;
+  font-weight: bold;
+  background-color: #fafafa;
+  border: 1px dotted black;
+  border-radius: 15px;
+  opacity: 0.8;
+  max-height: 690px;
+}
+
+#countdown-outbreak {
+  font-weight: bold;
+  background-color: "#0f0f0f";
+  border: 1px dotted black;
+  border-radius: 15px;
+  opacity: 0.8;
+  padding: 1rem;
+  color: black;
+}
+
+.usefulLinks li {
+  list-style-type: none;
+  padding: 1rem;
+  text-align: center;
+}
+
+.linksList {
+  padding-left: 0;
+}
+
+.routcont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#overmenurow {
+  display: flex;
+  justify-content: left;
+}
+
+p#advices {
+  line-height: 3rem;
+  font-size: 1.15em;
+  color: black;
+  margin-top: 0.3rem;
+  margin-left: 0.5em;
+}
+
+#underline {
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.125em;
+}
+
+span.advice-highlights {
+  font-size: 1em;
+  font-weight: bold;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/*MENU BUTTON*/
+
+.openbtn {
+  border-radius: 5px;
+  border: 1px dotted grey;
+  font-size: 1.25em;
+  background-color: #ffffff;
+  color: rgb(88, 87, 87);
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-right: 0.5em;
+  margin-top: 1.25rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/*NAVBAR*/
+
+.initiallist {
+  position: relative;
+  padding: 0;
+  opacity: 0.8;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+ul.initiallist li {
+  font-size: 1em;
+  border-radius: 10px;
+  color: black;
+}
+
+.usefulLinks {
+  max-height: 285px;
+  position: relative;
+}
+
+/*BREADCRUMBS*/
+
+#breadbrumbs {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: black;
+}
+
+/*COUNTRY SEARCH*/
+
+input {
+  padding: 0.5rem;
+  width: 300px;
+}
+
+button {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 10%;
+}
+
+#countryruta {
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+#countrysearchbtn {
+  background-color: #ffffff;
+  font-size: 1em;
+  padding: 0.75rem;
+  border: white;
+  color: black;
+  margin-left: 0 auto;
+}
+
+#countrysearchbtn:hover {
+  background-color: grey;
+  color: white;
+}
+
+#commentbelow {
+  font-weight: bold;
+  padding-top: 1rem;
+  color: rgb(97, 92, 92);
+}
+
+#star {
+  font-weight: bold;
+  color: white;
+}
+
+.notvalidcountry {
+  background-color: "#fafafa";
+  margin-bottom: 5.5rem;
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  border: 1px dotted white;
+  padding: 1rem;
+  font-weight: bold;
+  color: black;
+}
+
+.ContList li {
+  list-style-type: none;
+  margin-left: 0;
+  padding: 0.75rem;
+  color: black;
+  font-weight: bold;
+}
+
+#recommendations_link {
+  margin-top: 1rem;
+}
+
+/*INITIAL WARNING*/
+
+#warn h3 {
+  color: rgb(102, 101, 101);
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#warn p {
+  color: rgb(104, 103, 103);
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/*INFO CARDS*/
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  color: black;
+}
+
+.info h4 {
+  color: black;
+}
+
+.globalinfo,
+.countryinfo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  border-radius: 10px;
+  color: black;
+}
+
+.country_title {
+  color: #0a0a0a;
+}
+
+.country_data {
+  position: absolute;
+  top: 0;
+  left: -10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: black;
+  height: 50%;
+}
+
+.backToTop {
+  color: black;
+  margin-top: 1.5rem;
+  border: 1px solid grey;
+  background-color: "#fafafa";
+  border-radius: 5px;
+}
+
+.backToTop:hover {
+  color: black;
+  background-color: "#f0f0f0";
+}
+
+.card {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px dotted black;
+  max-width: 60%;
+  border-radius: 15px;
+  opacity: 0.8;
+  background-color: #f0f0f0;
+  color: black;
+  opacity: 0.7;
+  /* position: relative; */
+}
+
+#travelinfo_card {
+  margin-top: 20vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  background-color: "#fafafa";
+  color: white;
+  line-height: 2em;
+  padding: 1rem;
+  min-height: 30vh;
+  max-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#recommendations_link {
+  color: darkblue;
+  font-weight: bold;
+}
+
+/*CARD IMAGES*/
+
+.country_image {
+  position: relative;
+  top: -20;
+  left: 0;
+  height: 80vh;
+  width: 120%;
+  filter: blur(1px);
+}
+
+.global_image {
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  z-index: -1;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.useful_image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.2;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+/*TABLE TOP 10 COUNTRIES*/
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+.countryinfo th {
+  background-color: #949da0;
+  color: #f1efef;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+/*World map options*/
+
+svg.map-img {
+  margin-bottom: 2rem;
+}
+
+.map-selected {
+  fill: #e3da37;
+}
+
+.map-unselected {
+  fill: #699eaa;
+}
+
+.map-selected:hover,
+.map-unselected:hover {
+  cursor: pointer;
+}
+
+/*Map Tooltip options*/
+.class {
+  position: relative;
+}
+.displayText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -180px;
+  /* background-color: rgba(105, 158, 170, 0.9); */
+  background-color: rgba(184, 202, 206, 0.9);
+  color: rgb(59, 93, 104);
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fafafa;
+  color: black;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1em;
+}
+@media screen and (min-width: 200px) and (max-width: 400px) {
+  .openbtn {
+    font-size: 1.05rem;
   }
-  to {
-    transform: rotate(360deg);
+  th,
+  td {
+    font-size: 0.7em;
+    padding: 0.2em;
+  }
+
+  #warn {
+    font-size: small;
+  }
+
+  /*Country search*/
+
+  .country_search {
+    min-height: 120px;
+  }
+
+  .forma {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .country_search h6 {
+    color: grey;
+  }
+
+  .country_search input {
+    padding: 0;
+    margin: 1rem auto 1rem auto;
+    max-width: 50%;
+    margin-top: 0.75rem;
+  }
+
+  #countrysearchbtn {
+    padding: 0.5rem;
+    max-width: 20%;
+    margin-top: 0.5rem;
+  }
+
+  /*Conuntry table*/
+
+  #headings-country-table {
+    font-size: small;
+  }
+
+  /*Map*/
+
+  .displayText {
+    max-height: 53%;
+    margin-top: -65px;
+  }
+
+  .displayText a {
+    font-size: 0.7em;
+    margin: 0.25em;
+  }
+
+  svg.map-img {
+    margin-bottom: 2rem;
+    margin-top: -45px;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+  .App-header {
+    max-height: 150px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+  .adv {
+    text-align: center;
+  }
+  .openbtn {
+    min-width: 80px;
+  }
+
+  .forma {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #warn {
+    font-size: small;
+  }
+
+  /*Navbar */
+  #navbar_div {
+    font-size: 0.8em;
+  }
+
+  /*USEFUL LINKS*/
+
+  .usefulLinks {
+    max-height: 500px;
+    width: 100%;
+    margin-right: 1rem;
+  }
+
+  .linksList {
+    display: flex;
+    justify-content: center;
+  }
+
+  div.card {
+    width: 300px;
+    margin: 1rem;
+  }
+
+  /*NAVLIST*/
+
+  .initiallist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-weight: bold;
+    color: black;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  ul.initiallist li {
+    padding: 1rem;
+    min-width: 300px;
+    border: 1px dotted black;
+  }
+
+  /*COUNTRY SEARCH*/
+
+  #countrymaincard {
+    margin-bottom: 5rem;
+  }
+
+  #countrysearchbtn {
+    margin: 0em auto 0.3em auto;
+    padding: 0.3em;
+    max-width: 50%;
+    border-radius: 5px;
+    border: 1px dotted grey;
+  }
+
+  #countryruta {
+    border-radius: 10px;
+    margin: 0.6em auto;
+    padding: 0.1em;
+    max-width: 50%;
+  }
+
+  /*TABLE*/
+
+  th,
+  td {
+    font-size: 0.9em;
+    padding: 0.3em;
+  }
+  th {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  /*MAP*/
+
+  svg.map-img {
+    max-width: 400px;
+    margin-top: -3em;
+  }
+
+  .displayText {
+    max-height: 43%;
+    margin-top: -75px;
+  }
+
+  .displayText a {
+    font-size: smaller;
+    margin: 0.25em;
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 600px) {
+  .initiallist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #warn {
+    font-size: small;
+  }
+
+  th,
+  td {
+    font-size: 0.9em;
+    padding: 0.2em;
+  }
+
+  th {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  #countryruta {
+    border-radius: 10px;
+    margin: 0.2em auto;
+    padding: 0.1em;
+    max-width: 50%;
+  }
+
+  #countrysearchbtn {
+    margin: 0.6em 0.6em;
+    padding: 0.3em;
+    max-width: 50%;
+    border-radius: 5px;
+    border: 1px dotted grey;
+  }
+
+  svg.map-img {
+    max-width: 500px;
+    margin-top: -2em;
+  }
+
+  .displayText {
+    max-height: 43%;
+    margin-top: -70px;
+  }
+
+  .displayText a {
+    font-size: small;
+    margin: 0.25em;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1100px) {
+  .initiallist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  th,
+  td {
+    font-size: 0.8em;
+    padding: 0.4em;
+  }
+  #countryruta {
+    border-radius: 10px;
+    margin: 0.2em auto;
+    padding: 0.3em;
+    max-width: 50%;
+  }
+
+  #countrysearchbtn {
+    margin: 0.6em 0.6em;
+    padding: 0.5em;
+    max-width: 50%;
+    border-radius: 5px;
+    border: 1px dotted grey;
+  }
+
+  .displayText {
+    max-height: 43%;
+    margin-top: -65px;
+  }
+
+  .displayText a {
+    font-size: medium;
+    margin: 0.25em;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .usefulLinks {
+    max-height: 500px;
+    width: 95%;
+    margin-right: 1rem;
+  }
+
+  .linksList {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    width: 500px;
+    margin: 1rem;
+  }
+
+  ul.initiallist {
+    list-style-type: none;
+    font-weight: bold;
+    justify-content: center;
+  }
+
+  ul.initiallist li {
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 1101px) {
+  .card {
+    width: 800px;
+  }
+
+  /*.routcont {margin-left:5rem;}*/
+
+  ul.initiallist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    font-weight: bold;
+    justify-content: center;
+  }
+
+  ul.initiallist li {
+    padding: 1rem;
+    color: black;
+  }
+
+  th,
+  td {
+    font-size: 0.95em;
+    padding: 0.5em;
+  }
+
+  #countryruta {
+    border-radius: 10px;
+    margin: 0.2em auto;
+    padding: 0.3em;
+    max-width: 50%;
+  }
+
+  #countrysearchbtn {
+    margin: 0.6em 0.6em;
+    padding: 0.5em;
+    max-width: 50%;
+    border-radius: 5px;
+    border: 1px dotted grey;
+  }
+
+  .displayText {
+    max-height: 43%;
+    margin-top: -80px;
   }
 }
