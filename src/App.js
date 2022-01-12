@@ -22,7 +22,7 @@ const theme = createTheme({
 });
 
 function App() {
-  const [advices, setAdvices] = useState(true);
+  const [advices, setAdvices] = useState(false);
   const [text, setAdtext] = useState("");
   const [warning, setWarning] = useState(true);
 
@@ -133,19 +133,15 @@ function App() {
                 </div>
               )}
               <div>
-                {advices ? (
-                  <p id="countdown-outbreak">
-                    The outbreak was first reported to World Health Organisation{" "}
-                    <Moment
-                      date="2019-12-31T12:59-0500"
-                      durationFromNow
-                    ></Moment>{" "}
-                    ago
-                  </p>
-                ) : null}
+                <p id="countdown-outbreak">
+                  The outbreak was first reported to World Health Organisation{" "}
+                  <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment>{" "}
+                  ago
+                </p>
               </div>
 
               <Routes>
+                <Route path="/" component={Navbar} />
                 <Route path="/GlobalSearch" component={GlobalSearch} />
                 <Route path="/CountrySearch" component={CountrySearch} />
                 <Route path="/ContagionList" component={ContagionList} />

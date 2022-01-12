@@ -50,7 +50,7 @@ const CountrySearch = () => {
   // const [rawData, setRawData] = useState([]);
   // const [showRecs, setRecs] = useState(false);
   // const [travelData, setTravelData] = useState([]);
-  const classes = useStyles();
+  const [setClasses, classes] = useState(useStyles());
   const [countryData, setCountryData] = useState("");
 
   useEffect(() => {
