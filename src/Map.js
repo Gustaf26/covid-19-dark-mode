@@ -1,6 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-
-import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
 // import Tooltip from "react-bootstrap/Tooltip";

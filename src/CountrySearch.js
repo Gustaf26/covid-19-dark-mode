@@ -1,13 +1,13 @@
 // import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { withStyles, makeStyles } from "@mui/core/styles";
-import Table from "@mui/core/Table";
-import TableBody from "@mui/core/TableBody";
-import TableCell from "@mui/core/TableCell";
-import TableContainer from "@mui/core/TableContainer";
-import TableHead from "@mui/core/TableHead";
-import TableRow from "@mui/core/TableRow";
-import Paper from "@mui/core/Paper";
+import { withStyles, makeStyles } from "@mui/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 import Moment from "react-moment";
 import Key from "./keys";

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
 
-import { withStyles } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { withStyles } from "@mui/styles";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
 const StyledTabs = withStyles({
   indicator: {
@@ -88,7 +88,7 @@ const Navbar = (props) => {
 
   return (
     <div>
-      {newRoute ? <Redirect to={newRoute} /> : null}
+      {newRoute ? <Navigate to={newRoute} /> : null}
 
       {showmenu === false ? (
         <button type="submit" className="openbtn" onClick={(e) => openmenu(e)}>

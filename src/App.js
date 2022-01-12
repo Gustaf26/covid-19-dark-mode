@@ -6,45 +6,38 @@ import GlobalSearch from "./GlobalSearch";
 import Map from "./Map";
 import Moment from "react-moment";
 import Navbar from "./Navbar";
-import { BrowserRouter, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import US from "./US";
 
 import "./App.css";
 
-import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const theme = createMuiTheme();
-
-const useStyles = makeStyles((theme) => {
-  root: {
-    // some CSS that access to theme
-    width = "100%";
-  }
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#ffffff",
+    },
+  },
 });
 
 function App() {
   const [advices, setAdvices] = useState(true);
   const [text, setAdtext] = useState("");
   const [warning, setWarning] = useState(true);
-  const [classes, setClasses] = useState(useStyles());
 
-  closead = () => {
+  const closead = () => {
     setAdvices(false);
   };
 
-  showad = () => {
+  const showad = () => {
     setAdvices(true);
   };
 
-  closeWarning = () => {
+  const closeWarning = () => {
     setWarning(false);
   };
-  openwarning = () => {
+  const openwarning = () => {
     setWarning(true);
   };
 
@@ -95,67 +88,75 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>COVID-19 UPDATES</h1>
-        <p>Get updates on the virus from all over the world</p>
-      </header>
-      <div className="container">
-        <div className="routcont">
-          <BrowserRouter>
-            <div id="overmenurow">
-              <Navbar
-                className="main-nav"
-                activeClassName="main-nav-active"
-                closeadvice={this.closead}
-                reopenadvice={this.showad}
-                closetext={this.closeadtext}
-                closeWarning={this.closeWarning}
-                openwarning={this.openwarning}
-              />
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <header className="App-header">
+          <h1>COVID-19 UPDATES</h1>
+          <p>Get updates on the virus from all over the world</p>
+        </header>
+        <div className="container">
+          <div className="routcont">
+            <BrowserRouter>
+              <div id="overmenurow">
+                <Navbar
+                  className="main-nav"
+                  activeClassName="main-nav-active"
+                  closeadvice={() => closead()}
+                  reopenadvice={() => showad()}
+                  closetext={() => closeadtext()}
+                  closeWarning={() => closeWarning()}
+                  openwarning={() => openwarning()}
+                />
 
-              {advices ? (
-                <div>
-                  <p id="advices" onClick={this.advices}>
-                    Advices for prevention
+                {advices ? (
+                  <div>
+                    <p id="advices" onClick={() => getAdvices()}>
+                      Advices for prevention
+                    </p>
+                  </div>
+                ) : null}
+              </div>
+
+              <hr></hr>
+
+              {warning && (
+                <div id="warn">
+                  {text ? text : null}
+                  <h3>
+                    ATTENTION: Please check the time update for the data
+                    delivered
+                  </h3>
+                  <p>
+                    The disease spreads progressively and we only have access to{" "}
+                    <span id="underline">daily updates</span>
                   </p>
                 </div>
-              ) : null}
-            </div>
-
-            <hr></hr>
-
-            {warning && (
-              <div id="warn">
-                {text ? text : null}
-                <h3>
-                  ATTENTION: Please check the time update for the data delivered
-                </h3>
-                <p>
-                  The disease spreads progressively and we only have access to{" "}
-                  <span id="underline">daily updates</span>
-                </p>
+              )}
+              <div>
+                {advices ? (
+                  <p id="countdown-outbreak">
+                    The outbreak was first reported to World Health Organisation{" "}
+                    <Moment
+                      date="2019-12-31T12:59-0500"
+                      durationFromNow
+                    ></Moment>{" "}
+                    ago
+                  </p>
+                ) : null}
               </div>
-            )}
-            <div>
-              {advices ? (
-                <p id="countdown-outbreak">
-                  The outbreak was first reported to World Health Organisation{" "}
-                  <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment>{" "}
-                  ago
-                </p>
-              ) : null}
-            </div>
 
-            <Route path="/GlobalSearch" component={GlobalSearch} />
-            <Route path="/CountrySearch" component={CountrySearch} />
-            <Route path="/ContagionList" component={ContagionList} />
-            <Route path="/Us" component={US} />
-            <Route path="/world" component={Map} />
-          </BrowserRouter>
+              <Routes>
+                <Route path="/GlobalSearch" component={GlobalSearch} />
+                <Route path="/CountrySearch" component={CountrySearch} />
+                <Route path="/ContagionList" component={ContagionList} />
+                <Route path="/Us" component={US} />
+                <Route path="/world" component={Map} />
+              </Routes>
+            </BrowserRouter>
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
