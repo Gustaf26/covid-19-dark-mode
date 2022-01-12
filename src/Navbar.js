@@ -26,6 +26,7 @@ const StyledTab = withStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: theme.typography.pxToRem(window.innerWidth > 600 ? 15 : 14),
     marginRight: theme.spacing(1),
+    color: theme.typography.color,
     "&:focus": {
       opacity: 1,
       color: "#000000",
@@ -38,7 +39,7 @@ const StyledTab = withStyles((theme) => ({
 }))((props) => <Tab disableRipple {...props} />);
 
 const Navbar = (props) => {
-  const [showmenu, setMenu] = useState(false);
+  const [showmenu, setMenu] = useState(true);
   const [bread, setBread] = useState([]);
   const [value, setValue] = useState(0);
   const [newRoute, setRoute] = useState("");
