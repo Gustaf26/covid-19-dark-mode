@@ -35,6 +35,19 @@ const Navbar = (props) => {
     }
   }, []);
 
+  const activeLink = (e) => {
+    e.preventDefault();
+    var current = document.getElementsByClassName("active");
+    if (current.length) {
+      if (e.target.id != "home") {
+        document.getElementById("home").className.replace(" active", "");
+      } else {
+        current[0].className = current[0].className.replace(" active", "");
+        e.target.className += " active";
+      }
+    }
+  };
+
   return (
     <div className="routcont">
       <div id="overmenurow">
@@ -52,7 +65,15 @@ const Navbar = (props) => {
           <div id="navbar_div">
             <ul className="initiallist">
               <li label="Home">
-                <NavLink to={"/"}>Home</NavLink>
+                <NavLink
+                  id="home"
+                  to={"/"}
+                  onClick={(e) => {
+                    activeLink(e), setMenu(!showmenu);
+                  }}
+                >
+                  Home
+                </NavLink>
               </li>
               <li label="Advices">
                 {" "}
