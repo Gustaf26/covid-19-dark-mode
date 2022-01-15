@@ -9,6 +9,7 @@
 body {
   /* background: url("sea.jpg") fixed; */
   background-position: 0 0 0 0;
+  background-color: #050505;
 }
 
 .App-logo {
@@ -17,7 +18,7 @@ body {
 }
 
 .App-header {
-  background-color: #ffffff;
+  background-color: rgb(15, 15, 15);
   min-height: 100px;
   max-height: 20vh;
   display: flex;
@@ -25,7 +26,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(6px + 2vmin);
-  color: black;
+  color: white;
   padding-top: 1rem;
 }
 
@@ -36,9 +37,12 @@ body {
 
 .container {
   display: flex;
+  min-height: 90%;
   flex-direction: row;
   justify-content: center;
-  background-color: #eff3f7;
+  background-image: url("./assets/viruspic.jpg");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h3 {
@@ -81,6 +85,8 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 #overmenurow {
@@ -124,30 +130,32 @@ span.advice-highlights {
 /*NAVBAR*/
 
 .initiallist {
-  position: relative;
   padding: 0;
   opacity: 0.8;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #050505;
+  opacity: 0.8;
+  position: sticky;
+  top: 0 !important;
+}
+
+ul.initiallist li:hover {
+  background: white;
+  color: #050505 !important;
 }
 
 ul.initiallist li a {
   text-decoration: none;
   font-size: 1em;
   border-radius: 10px;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .usefulLinks {
   max-height: 285px;
   position: relative;
-}
-
-.Mui-selected {
-  color: black !important;
-  font-weight: bold !important;
 }
 
 /*BREADCRUMBS*/
@@ -388,10 +396,19 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+tr:nth-child(odd) {
+  color: white;
+  background-color: black;
+  opacity: 0.7;
+}
+
 /*World map options*/
 
 svg.map-img {
   margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  min-height: 400px;
 }
 
 .map-selected {
@@ -430,8 +447,8 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #fafafa;
-  color: black;
+  background-color: #050505;
+  color: #ffffff;
   text-align: center;
   padding: 1rem;
   font-size: 1em;
@@ -529,6 +546,7 @@ footer {
   /*Navbar */
   #navbar_div {
     font-size: 0.8em;
+    width: 100%;
   }
 
   /*USEFUL LINKS*/
@@ -552,6 +570,8 @@ footer {
   /*NAVLIST*/
 
   .initiallist {
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -567,6 +587,7 @@ footer {
     padding: 1rem;
     min-width: 300px;
     border: 1px dotted black;
+    color: white;
   }
 
   /*COUNTRY SEARCH*/

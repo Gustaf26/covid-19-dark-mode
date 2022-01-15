@@ -36,7 +36,7 @@ const Navbar = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="routcont">
       <div id="overmenurow">
         {showmenu === false ? (
           <button
@@ -50,7 +50,7 @@ const Navbar = (props) => {
 
         {showmenu === true ? (
           <div id="navbar_div">
-            <ul className="initiallist" style={{ backgroundColor: "#ffffff" }}>
+            <ul className="initiallist">
               <li label="Home">
                 <NavLink to={"/"}>Home</NavLink>
               </li>
