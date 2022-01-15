@@ -4,6 +4,9 @@ import Key from "./keys";
 
 const ContagionList = () => {
   const [data, setData] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [clicked, setClicked] = useState(false);
 
   const processData = (dat) => {
     let globalarr = [];
@@ -30,7 +33,8 @@ const ContagionList = () => {
     let sortedarr = selectarr.filter((pers) => pers.deaths > 20000);
 
     setData({ data: sortedarr });
-    console.log(data);
+    setSelected({ data: sortedarr.slice(0, 11) });
+    setIndex(10);
   };
 
   useEffect(() => {
@@ -51,6 +55,21 @@ const ContagionList = () => {
       });
   }, []);
 
+  const selectEntries = (arg) => {
+    if (arg == "next") {
+      if (selected.data.length < data.data.length && index < data.data.length) {
+        setSelected({ data: data.data.slice(index, index + 10) });
+        setIndex(index + 10);
+      }
+    } else {
+      if (index == 10) {
+        return;
+      }
+      setIndex(index - 10);
+      setSelected({ data: data.data.slice(index - 10, index) });
+    }
+  };
+
   return (
     <div>
       <div className="countryinfo">
@@ -67,9 +86,9 @@ const ContagionList = () => {
             </tr>
           </thead>
           <tbody>
-            {data.data &&
-              data.data.length > 0 &&
-              data.data.map((cas, i) => {
+            {selected.data &&
+              selected.data.length > 0 &&
+              selected.data.map((cas, i) => {
                 return (
                   <tr key={i}>
                     <td>{cas.country}</td>
@@ -84,6 +103,14 @@ const ContagionList = () => {
               })}
           </tbody>
         </table>
+        <div>
+          <button className="backToTop" onClick={() => selectEntries("prev")}>
+            Prev
+          </button>
+          <button className="backToTop" onClick={() => selectEntries("next")}>
+            Next
+          </button>
+        </div>
         <p id="commentbelow">
           (*) List of countries excepting the US and China
         </p>

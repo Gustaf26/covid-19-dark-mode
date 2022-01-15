@@ -409,6 +409,7 @@ svg.map-img {
   margin-top: 1.5rem;
   border-radius: 10px;
   min-height: 400px;
+  background-color: rgba(20, 20, 20, 0.6);
 }
 
 .map-selected {
