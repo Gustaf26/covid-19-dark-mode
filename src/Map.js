@@ -92,7 +92,7 @@ function Map() {
       <h5 id="heading-reg-data" className="pb-2 my-3">
         See stats (click) on each continent
       </h5>
-      <div class="class">
+      <div className="class">
         <WorldMap
           selected={selected}
           onSelect={(cont) => getMyToolTipFunction(cont)}

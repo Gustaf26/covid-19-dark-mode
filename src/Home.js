@@ -19,16 +19,6 @@ const Home = () => {
 
   return (
     <div>
-      <div id="overmenurow">
-        <Navbar
-          className="main-nav"
-          activeClassName="main-nav-active"
-          closetext={() => closeadtext()}
-          closeWarning={() => closeWarning()}
-          openwarning={() => openwarning()}
-        />
-      </div>
-
       <hr></hr>
 
       {warning && (

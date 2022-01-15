@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ContagionList from "./ContagionList";
 import CountrySearch from "./CountrySearch";
-import GlobalSearch from "./GlobalSearch";
+import Advices from "./Advices";
+import Navbar from "./Navbar";
 // import Usefullinks from "./usefullinks";
 import Map from "./Map";
 import Home from "./Home";
@@ -72,14 +73,15 @@ function App() {
         </header>
         <div className="container">
           <div className="routcont">
+            <Navbar />
             <BrowserRouter>
               <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route path="/GlobalSearch" element={<GlobalSearch />} />
-                <Route path="/CountrySearch" element={<CountrySearch />} />
-                <Route path="/ContagionList" element={ContagionList} />
-                <Route path="/Us" component={<US />} />
-                <Route path="/world" component={<Map />} />
+                <Route path="/advices" element={<Advices />} />
+                <Route path="/countrysearch" element={<CountrySearch />} />
+                <Route path="/contagionlist" element={ContagionList} />
+                <Route path="/us" element={<US />} />
+                <Route path="/world" element={<Map />} />
               </Routes>
             </BrowserRouter>
           </div>
