@@ -144,6 +144,11 @@ ul.initiallist li {
   position: relative;
 }
 
+.Mui-selected {
+  color: black !important;
+  font-weight: bold !important;
+}
+
 /*BREADCRUMBS*/
 
 #breadbrumbs {
