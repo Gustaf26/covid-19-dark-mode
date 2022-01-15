@@ -1,48 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { NavLink, Routes, Route } from "react-router-dom";
+
 import Breadcrumbs from "./Breadcrumbs";
-
-import { withStyles } from "@mui/styles";
-import Box from "@mui/material/Box";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-
-const StyledTabs = withStyles({
-  indicator: {
-    display: "flex",
-    justifyContent: "center",
-    backgroundColor: "transparent",
-    color: "black",
-    "& > span": {
-      maxWidth: 40,
-      width: "100%",
-      backgroundColor: "black",
-    },
-  },
-})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
-
-const Mytab = withStyles((theme) => ({
-  root: {
-    textTransform: "none",
-    fontWeight: theme.typography.fontWeightRegular,
-    fontSize: theme.typography.pxToRem(window.innerWidth > 600 ? 15 : 14),
-    marginRight: theme.spacing(1),
-    "&:selected": { color: "rgb(88, 87, 87)" },
-    "&:focus": {
-      opacity: 1,
-      color: "#000000",
-    },
-    "&:hover": {
-      backgroundColor: "rgb(88, 87, 87)",
-      color: "#ffffff",
-    },
-  },
-}))((props) => <Tab disableRipple {...props} />);
+import ContagionList from "./ContagionList";
+import CountrySearch from "./CountrySearch";
+import Map from "./Map";
+import Advices from "./Advices";
+import US from "./US";
 
 const Navbar = (props) => {
   const [showmenu, setMenu] = useState(true);
   const [bread, setBread] = useState([]);
-  const [value, setValue] = useState(0);
   const [direction, setDirection] = useState("horizontal");
 
   const nollstall = () => {
@@ -68,37 +36,57 @@ const Navbar = (props) => {
   }, []);
 
   return (
-    <div id="overmenurow">
-      {showmenu === false ? (
-        <button type="submit" className="openbtn" onClick={(e) => openmenu(e)}>
-          ☰ Menu
-        </button>
-      ) : null}
+    <div>
+      <div id="overmenurow">
+        {showmenu === false ? (
+          <button
+            type="submit"
+            className="openbtn"
+            onClick={(e) => openmenu(e)}
+          >
+            ☰ Menu
+          </button>
+        ) : null}
 
-      {showmenu === true ? (
-        <div id="navbar_div">
-          <Box sx={{ width: "100%" }}>
-            <Tabs
-              orientation={direction ? direction : null}
-              className="initiallist"
-              style={{ backgroundColor: "#ffffff" }}
-              value={value}
-              aria-label="nav tabs example"
-            >
-              <Mytab label="Home" href="/" />
-              <Mytab label="Advices" href="/advices" />
-              <Mytab label="Most Infected Countries" href="/contagionlist" />
-              <Mytab label="Search By Country" href="/countrysearch" />
-              <Mytab label="U.S." href="/us" />
-              <Mytab label="World Map" href="/world" />
-            </Tabs>
-          </Box>
-        </div>
-      ) : null}
+        {showmenu === true ? (
+          <div id="navbar_div">
+            <ul className="initiallist" style={{ backgroundColor: "#ffffff" }}>
+              <li label="Home">
+                <NavLink to={"/"}>Home</NavLink>
+              </li>
+              <li label="Advices">
+                {" "}
+                <NavLink to={"/advices"}></NavLink>
+              </li>
+              <li label="Most Infected Countries">
+                <NavLink to={"/contagionlist"}>Most Infected Countries</NavLink>
+              </li>
+              <li label="Search By Country">
+                <NavLink to={"/countrysearch"}>Search By Country</NavLink>
+              </li>
+              <li label="U.S.">
+                {" "}
+                <NavLink to={"/us"}>US</NavLink>
+              </li>
+              <li label="World Map">
+                {" "}
+                <NavLink to={"/world"}>World map</NavLink>
+              </li>
+            </ul>
+          </div>
+        ) : null}
 
-      {bread.length ? (
-        <Breadcrumbs update={() => nollstall()} actualbread={bread} />
-      ) : null}
+        {bread.length ? (
+          <Breadcrumbs update={() => nollstall()} actualbread={bread} />
+        ) : null}
+      </div>
+      <Routes>
+        <Route path="/advices" element={<Advices />} />
+        <Route path="/countrysearch" element={<CountrySearch />} />
+        <Route path="/contagionlist" element={<ContagionList />} />
+        <Route path="/us" element={<US />} />
+        <Route path="/world" element={<Map />} />
+      </Routes>
     </div>
   );
 };

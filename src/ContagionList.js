@@ -1,33 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import Key from "./keys";
 
-class ContagionList extends React.Component {
-  state = {
-    data: [],
-  };
+const ContagionList = () => {
+  const [data, setData] = useState([]);
 
-  componentDidMount = () => {
-    fetch(
-      `https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=`,
-      {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-          "x-rapidapi-key": `${Key.Key}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => this.listoutput(data))
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  listoutput = (dat) => {
-    // let dataarr = [...this.state.data];
-
+  const processData = (dat) => {
     let globalarr = [];
 
     let j;
@@ -51,25 +29,30 @@ class ContagionList extends React.Component {
     //console.log(globalarr)
     let sortedarr = selectarr.filter((pers) => pers.deaths > 20000);
 
-    this.setState({ data: sortedarr });
+    setData({ data: sortedarr });
+    console.log(data);
   };
 
-  render() {
-    const list = this.state.data.map((cas, i) => {
-      return (
-        <tr key={i}>
-          <td>{cas.country}</td>
-          <td>{cas.confirmed}</td>
-          {/* <td>{cas.recovered}</td> */}
-          <td>{cas.deaths}</td>
-          <td>
-            <Moment durationFromNow>{cas.timestamp}</Moment> from now
-          </td>
-        </tr>
-      );
-    });
+  useEffect(() => {
+    fetch(
+      `https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=`,
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
+          "x-rapidapi-key": `${Key.Key}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => processData(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    return (
+  return (
+    <div>
       <div className="countryinfo">
         <table>
           <thead>
@@ -83,14 +66,30 @@ class ContagionList extends React.Component {
               <th>UPDATE (hh:mm:ss)</th>
             </tr>
           </thead>
-          <tbody>{list}</tbody>
+          <tbody>
+            {data.data &&
+              data.data.length > 0 &&
+              data.data.map((cas, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{cas.country}</td>
+                    <td>{cas.confirmed}</td>
+                    {/* <td>{cas.recovered}</td> */}
+                    <td>{cas.deaths}</td>
+                    <td>
+                      <Moment durationFromNow>{cas.timestamp}</Moment> from now
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
         </table>
         <p id="commentbelow">
           (*) List of countries excepting the US and China
         </p>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default ContagionList;

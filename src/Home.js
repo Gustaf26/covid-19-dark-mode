@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <div>
       <hr></hr>
-
+      <Navbar />
       {warning && (
         <div id="warn">
           {text ? text : null}
