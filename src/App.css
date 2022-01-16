@@ -28,6 +28,9 @@ body {
   font-size: calc(6px + 2vmin);
   color: white;
   padding-top: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .App-header h1 {
@@ -134,11 +137,11 @@ span.advice-highlights {
   opacity: 0.8;
   margin-top: 1rem;
   margin-bottom: 2rem;
+  height: 60px;
+  width: 100%;
   border-radius: 5px;
   background-color: #050505;
   opacity: 0.8;
-  position: sticky;
-  top: 0 !important;
 }
 
 ul.initiallist li a:hover {
