@@ -20,17 +20,13 @@ const Navbar = (props) => {
   };
 
   const getHamburger = () => {
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 800) {
       setMenu(!showmenu);
     }
   };
 
   useEffect(() => {
-    if (window.innerWidth > 1000) {
-      setDirection("horizontal");
-    } else {
-      setDirection("vertical");
-    }
+    getHamburger();
   }, []);
 
   const activeLink = (e) => {
@@ -57,37 +53,37 @@ const Navbar = (props) => {
 
         {showmenu === true ? (
           <div id="navbar_div">
-            <ul className="initiallist">
+            <ul id="initiallist">
               <li label="Home">
                 <NavLink to={"/"} onClick={() => getHamburger()}>
                   Home
                 </NavLink>
               </li>
-              <li label="Advices">
+              {/* <li label="Advices">
                 {" "}
                 <NavLink to={"/advices"}></NavLink>
-              </li>
+              </li> */}
               <li label="Most Infected Countries">
-                <NavLink
-                  onClick={() => {
-                    props.closeWarn();
-                    activeLink(e);
-                  }}
-                  to={"/contagionlist"}
-                >
+                <NavLink onClick={() => getHamburger()} to={"/contagionlist"}>
                   Most Infected Countries
                 </NavLink>
               </li>
               <li label="Search By Country">
-                <NavLink to={"/countrysearch"}>Search By Country</NavLink>
+                <NavLink onClick={() => getHamburger()} to={"/countrysearch"}>
+                  Search By Country
+                </NavLink>
               </li>
               <li label="U.S.">
                 {" "}
-                <NavLink to={"/us"}>US</NavLink>
+                <NavLink onClick={() => getHamburger()} to={"/us"}>
+                  US
+                </NavLink>
               </li>
               <li label="World Map">
                 {" "}
-                <NavLink to={"/world"}>World map</NavLink>
+                <NavLink onClick={() => getHamburger()} to={"/world"}>
+                  World map
+                </NavLink>
               </li>
             </ul>
           </div>

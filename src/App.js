@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Home";
@@ -28,6 +28,14 @@ function App() {
   const openwarning = () => {
     setWarning(true);
   };
+
+  useEffect(() => {
+    if (window.innerWidth > 1000) {
+      openwarning();
+    } else {
+      closeWarning();
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
