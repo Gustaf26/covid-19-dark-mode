@@ -20,11 +20,14 @@ const Navbar = (props) => {
 
   const openmenu = (e) => {
     e.preventDefault();
-
     setMenu(true);
     setBread([]);
-    props.closeadvice();
-    props.closetext();
+  };
+
+  const getHamburger = () => {
+    if (window.innerWidth < 600) {
+      setMenu(!showmenu);
+    }
   };
 
   useEffect(() => {
@@ -69,7 +72,8 @@ const Navbar = (props) => {
                   id="home"
                   to={"/"}
                   onClick={(e) => {
-                    activeLink(e), setMenu(!showmenu);
+                    props.openWarn();
+                    activeLink(e), getHamburger();
                   }}
                 >
                   Home
@@ -80,7 +84,12 @@ const Navbar = (props) => {
                 <NavLink to={"/advices"}></NavLink>
               </li>
               <li label="Most Infected Countries">
-                <NavLink to={"/contagionlist"}>Most Infected Countries</NavLink>
+                <NavLink
+                  onClick={() => props.closeWarn()}
+                  to={"/contagionlist"}
+                >
+                  Most Infected Countries
+                </NavLink>
               </li>
               <li label="Search By Country">
                 <NavLink to={"/countrysearch"}>Search By Country</NavLink>
@@ -101,13 +110,6 @@ const Navbar = (props) => {
           <Breadcrumbs update={() => nollstall()} actualbread={bread} />
         ) : null}
       </div>
-      <Routes>
-        <Route path="/advices" element={<Advices />} />
-        <Route path="/countrysearch" element={<CountrySearch />} />
-        <Route path="/contagionlist" element={<ContagionList />} />
-        <Route path="/us" element={<US />} />
-        <Route path="/world" element={<Map />} />
-      </Routes>
     </div>
   );
 };

@@ -3,20 +3,6 @@ import Navbar from "./Navbar";
 import Moment from "react-moment";
 
 const Home = () => {
-  const [text, setAdtext] = useState("");
-  const [warning, setWarning] = useState(true);
-
-  const closeWarning = () => {
-    setWarning(false);
-  };
-  const openwarning = () => {
-    setWarning(true);
-  };
-
-  const closeadtext = () => {
-    setAdtext("");
-  };
-
   return (
     <div>
       <hr></hr>
