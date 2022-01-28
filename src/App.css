@@ -248,16 +248,13 @@ button {
 
 /*INITIAL WARNING*/
 
-#warn h3 {
-  color: rgb(102, 101, 101);
+#warn {
+  background-color: rgba(57, 58, 58, 0.6);
+  padding: 0.5rem;
   font-size: 1em;
   font-weight: bold;
-}
-
-#warn p {
-  color: rgb(104, 103, 103);
-  font-size: 1em;
-  font-weight: bold;
+  color: rgba(240, 243, 243, 0.6);
+  border-radius: 5px;
 }
 
 /*INFO CARDS*/

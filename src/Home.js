@@ -24,21 +24,19 @@ const Home = () => {
       {warning && (
         <div id="warn">
           {text ? text : null}
-          <h3>
+          <h5>
             ATTENTION: Please check the time update for the data delivered
-          </h3>
+          </h5>
           <p>
             The disease spreads progressively and we only have access to{" "}
             <span id="underline">daily updates</span>
           </p>
+          <p id="countdown-outbreak">
+            The outbreak was first reported to World Health Organisation{" "}
+            <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment> ago
+          </p>
         </div>
       )}
-      <div>
-        <p id="countdown-outbreak">
-          The outbreak was first reported to World Health Organisation{" "}
-          <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment> ago
-        </p>
-      </div>
     </div>
   );
 };
