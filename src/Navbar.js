@@ -20,7 +20,7 @@ const Navbar = (props) => {
   };
 
   const getHamburger = () => {
-    if (window.innerWidth < 800) {
+    if (window.innerWidth < 1100) {
       setMenu(!showmenu);
     }
   };
@@ -29,17 +29,8 @@ const Navbar = (props) => {
     getHamburger();
   }, []);
 
-  const activeLink = (e) => {
-    e.preventDefault();
-    let currentTag = document.getElementsByClassName("active");
-    if (currentTag.length) {
-      currentTag.className.replace(" active", "");
-    }
-    e.target.className += "active";
-  };
-
   return (
-    <div className="routcont">
+    <div className="routcont2">
       <div id="overmenurow">
         {showmenu === false ? (
           <button
@@ -47,7 +38,7 @@ const Navbar = (props) => {
             className="openbtn"
             onClick={(e) => openmenu(e)}
           >
-            ☰ Menu
+            ☰
           </button>
         ) : null}
 

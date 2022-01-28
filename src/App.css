@@ -21,10 +21,11 @@ body {
   background-color: #050505;
   margin-top: 1rem;
   height: 17vh;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 1em;
   color: white;
   padding: 1rem 10%;
@@ -36,6 +37,14 @@ body {
 .App-header h1 {
   margin: 0;
   font-size: calc(14px + 2vmin);
+}
+
+.routcont2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .container {
@@ -129,7 +138,7 @@ span.advice-highlights {
   font-size: 1.25em;
   background-color: #ffffff;
   color: rgb(88, 87, 87);
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: 0.25rem 0.75rem 0.25rem 0.75rem;
   margin-right: 0.5em;
   margin-top: 1.25rem;
 }
@@ -485,8 +494,32 @@ footer {
 
   /*Menu*/
 
+  .App-header {
+    padding: 0.5rem;
+  }
+
+  .navbar_div {
+    width: 20%;
+  }
+  ul#initiallist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-weight: normal;
+    color: black;
+    justify-content: center;
+    margin-top: 120%;
+    z-index: 1000;
+    height: 55%;
+    background-color: rgb(77, 78, 78);
+    width: 100%;
+  }
+
   ul#initiallist li {
-    max-width: 10%;
+    font-size: 0.75em;
+    width: 100%;
   }
 
   /*Country search*/
@@ -666,8 +699,17 @@ footer {
 @media screen and (min-width: 501px) and (max-width: 600px) {
   #initiallist {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-weight: bold;
+    color: black;
+    justify-content: center;
+    margin-top: 120%;
+    z-index: 1000;
+    height: 55%;
+    background-color: rgb(77, 78, 78);
   }
 
   #warn {
@@ -719,8 +761,17 @@ footer {
 @media screen and (min-width: 601px) and (max-width: 1100px) {
   #initiallist {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-weight: bold;
+    color: black;
+    justify-content: center;
+    margin-top: 120%;
+    z-index: 1000;
+    height: 55%;
+    background-color: rgb(77, 78, 78);
   }
   th,
   td {
