@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import Moment from "react-moment";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
 import CountrySearch from "./CountrySearch";
 import ContagionList from "./ContagionList";
 import Map from "./Map";
@@ -36,14 +36,13 @@ function App() {
           <header className="App-header">
             <div>
               <h1>COVID-19 UPDATES</h1>
-              <p>Get updates on the virus from all over the world</p>
             </div>
             <Navbar closeWarn={closeWarning} openWarn={openwarning} />
           </header>
           <div className="container">
             <div className="routcont">
               <Routes>
-                {/* <Route path="/advices" element={<Advices />} /> */}
+                <Route path="/" element={<Home />} />
                 <Route path="/countrysearch" element={<CountrySearch />} />
                 <Route path="/contagionlist" element={<ContagionList />} />
                 <Route path="/us" element={<US />} />
@@ -59,11 +58,6 @@ function App() {
                 <p>
                   The disease spreads progressively and we only have access to{" "}
                   <span id="underline">daily updates</span>
-                </p>
-                <p id="countdown-outbreak">
-                  The outbreak was first reported to World Health Organisation{" "}
-                  <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment>{" "}
-                  ago
                 </p>
               </div>
             )}

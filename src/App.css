@@ -48,10 +48,6 @@ body {
   background-size: cover;
 }
 
-h3 {
-  color: rgb(94, 96, 97);
-}
-
 .usefulLinks {
   margin: 1rem 1rem;
   min-width: 300px;
@@ -62,6 +58,14 @@ h3 {
   border-radius: 15px;
   opacity: 0.8;
   max-height: 690px;
+}
+
+#home-mess {
+  padding: 1rem;
+  margin-top: 10%;
+  background-color: rgba(96, 121, 122, 0.6);
+  color: rgb(240, 236, 236);
+  border-radius: 5px;
 }
 
 #countdown-outbreak {

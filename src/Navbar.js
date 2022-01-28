@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Breadcrumbs from "./Breadcrumbs";
-import ContagionList from "./ContagionList";
-import CountrySearch from "./CountrySearch";
-import Map from "./Map";
-import Advices from "./Advices";
-import US from "./US";
 
 const Navbar = (props) => {
   const [showmenu, setMenu] = useState(true);
@@ -40,15 +35,11 @@ const Navbar = (props) => {
 
   const activeLink = (e) => {
     e.preventDefault();
-    var current = document.getElementsByClassName("active");
-    if (current.length) {
-      if (e.target.id != "home") {
-        document.getElementById("home").className.replace(" active", "");
-      } else {
-        current[0].className = current[0].className.replace(" active", "");
-        e.target.className += " active";
-      }
+    let currentTag = document.getElementsByClassName("active");
+    if (currentTag.length) {
+      currentTag.className.replace(" active", "");
     }
+    e.target.className += "active";
   };
 
   return (
@@ -68,14 +59,7 @@ const Navbar = (props) => {
           <div id="navbar_div">
             <ul className="initiallist">
               <li label="Home">
-                <NavLink
-                  id="home"
-                  to={"/"}
-                  onClick={(e) => {
-                    props.openWarn();
-                    activeLink(e), getHamburger();
-                  }}
-                >
+                <NavLink to={"/"} onClick={() => getHamburger()}>
                   Home
                 </NavLink>
               </li>
@@ -85,7 +69,10 @@ const Navbar = (props) => {
               </li>
               <li label="Most Infected Countries">
                 <NavLink
-                  onClick={() => props.closeWarn()}
+                  onClick={() => {
+                    props.closeWarn();
+                    activeLink(e);
+                  }}
                   to={"/contagionlist"}
                 >
                   Most Infected Countries
