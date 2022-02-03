@@ -52,7 +52,8 @@ body {
   min-height: 90%;
   flex-direction: row;
   justify-content: center;
-  background-image: url("./assets/viruspic.jpg");
+  background: linear-gradient(rgba(58, 59, 59, 0.5), rgba(201, 223, 230, 0.5)),
+    url("./assets/viruspic.jpg");
   background-attachment: fixed;
   background-size: cover;
 }
@@ -203,6 +204,13 @@ button {
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 10%;
+}
+
+.country_search {
+  margin-top: 3rem;
+  background-color: rgba(184, 202, 206, 0.6);
+  border-radius: 5px;
+  padding: 1rem;
 }
 
 #countryruta {
