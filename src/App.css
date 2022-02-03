@@ -208,7 +208,10 @@ button {
 
 .country_search {
   margin-top: 3rem;
-  background-color: rgba(184, 202, 206, 0.6);
+  background: linear-gradient(
+    rgba(160, 195, 197, 0.6),
+    rgba(113, 131, 145, 0.6)
+  );
   border-radius: 5px;
   padding: 1rem;
 }
@@ -440,7 +443,10 @@ svg.map-img {
   margin-top: 1.5rem;
   border-radius: 10px;
   min-height: 400px;
-  background-color: rgba(96, 121, 122, 0.6);
+  background: linear-gradient(
+    rgba(160, 195, 197, 0.6),
+    rgba(113, 131, 145, 0.6)
+  );
 }
 
 .map-selected {
@@ -448,7 +454,7 @@ svg.map-img {
 }
 
 .map-unselected {
-  fill: #699eaa;
+  fill: #3c5257;
 }
 
 .map-selected:hover,
