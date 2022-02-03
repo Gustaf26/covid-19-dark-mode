@@ -65,8 +65,8 @@ const ContagionList = () => {
       if (index == 10) {
         return;
       }
+      setSelected({ data: data.data.slice(index - 20, index - 10) });
       setIndex(index - 10);
-      setSelected({ data: data.data.slice(index - 10, index) });
     }
   };
 

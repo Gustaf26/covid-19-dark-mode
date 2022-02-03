@@ -35,7 +35,7 @@ function App() {
     } else {
       closeWarning();
     }
-  }, []);
+  });
 
   return (
     <ThemeProvider theme={theme}>
@@ -59,14 +59,9 @@ function App() {
             </div>
             {warning && (
               <div id="warn">
-                {text ? text : null}
                 <h5>
                   ATTENTION: Please check the time update for the data delivered
                 </h5>
-                <p>
-                  The disease spreads progressively and we only have access to{" "}
-                  <span id="underline">daily updates</span>
-                </p>
               </div>
             )}
           </div>
