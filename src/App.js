@@ -42,7 +42,6 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
-            <div id="logo"></div>
             <Navbar closeWarn={closeWarning} openWarn={openwarning} />
           </header>
           <div className="container">

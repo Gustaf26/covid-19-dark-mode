@@ -44,12 +44,12 @@ const Navbar = (props) => {
 
         {showmenu === true ? (
           <div id="navbar_div">
+            <NavLink
+              id="logo"
+              to={"/"}
+              onClick={() => getHamburger()}
+            ></NavLink>
             <ul id="initiallist">
-              <li label="Home">
-                <NavLink to={"/"} onClick={() => getHamburger()}>
-                  Home
-                </NavLink>
-              </li>
               {/* <li label="Advices">
                 {" "}
                 <NavLink to={"/advices"}></NavLink>
