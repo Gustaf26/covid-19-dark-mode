@@ -25,7 +25,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
   font-size: 1em;
   color: white;
   padding: 1rem 10%;
@@ -39,10 +39,21 @@ body {
   font-size: calc(14px + 2vmin);
 }
 
+.App-header div#logo {
+  width: 10%;
+  height: auto;
+  background-image: url("./assets/viruspic-removebg.png");
+  background-size: cover;
+  filter: grayscale(100%);
+  margin-top: -10px;
+  /* background-position: 10px; */
+  padding: 3.5%;
+}
+
 .routcont2 {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 100%;
   margin: 0 auto;
 }
@@ -52,8 +63,7 @@ body {
   min-height: 90%;
   flex-direction: row;
   justify-content: center;
-  background: linear-gradient(rgba(58, 59, 59, 0.5), rgba(201, 223, 230, 0.5)),
-    url("./assets/viruspic.jpg");
+  background: url("./assets/viruspic-removebg.png");
   background-attachment: fixed;
   background-size: cover;
 }
