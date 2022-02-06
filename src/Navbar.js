@@ -20,7 +20,7 @@ const Navbar = (props) => {
   };
 
   const getHamburger = () => {
-    if (window.innerWidth < 1100) {
+    if (window.innerWidth < 600) {
       setMenu(!showmenu);
     }
   };
@@ -56,7 +56,7 @@ const Navbar = (props) => {
               </li> */}
               <li label="Most Infected Countries">
                 <NavLink onClick={() => getHamburger()} to={"/contagionlist"}>
-                  Most Infected Countries
+                  Infected Countries
                 </NavLink>
               </li>
               <li label="Search By Country">

@@ -56,7 +56,7 @@ a#logo {
   align-items: left;
   width: 100%;
   margin: 0 auto;
-  padding-left: 7%;
+  padding-left: 3%;
 }
 
 .container {
@@ -161,12 +161,11 @@ span.advice-highlights {
 #navbar_div {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
 
 #initiallist {
-  width: 100%;
   padding: 0;
   opacity: 0.8;
   margin-top: 1rem;
@@ -668,9 +667,10 @@ footer {
     font-weight: bold;
     color: black;
     justify-content: center;
-    margin-top: 120%;
-    z-index: 1000;
-    height: 55%;
+    margin-top: 45%;
+    margin-left: 40%;
+    z-index: 11000;
+    height: 50%;
     background-color: rgb(77, 78, 78);
   }
 
@@ -741,9 +741,10 @@ footer {
     font-weight: bold;
     color: black;
     justify-content: center;
-    margin-top: 120%;
-    z-index: 1000;
-    height: 55%;
+    margin-top: 45%;
+    margin-left: 40%;
+    z-index: 11000;
+    height: 50%;
     background-color: rgb(77, 78, 78);
   }
 
@@ -796,17 +797,20 @@ footer {
 @media screen and (min-width: 601px) and (max-width: 1100px) {
   #initiallist {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     list-style-type: none;
     font-weight: bold;
-    color: black;
     justify-content: center;
-    margin-top: 120%;
     z-index: 1000;
     height: 55%;
-    background-color: rgb(77, 78, 78);
+  }
+  #initiallist li {
+    width: 40%;
+    font-size: 90%;
+    padding: 0;
   }
   th,
   td {
