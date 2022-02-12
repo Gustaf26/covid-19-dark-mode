@@ -59,7 +59,9 @@ function Map() {
     };
 
     popup.style.display = "flex";
-    popup.style.justifyContent = "space-around";
+    popup.style.flexDirection = "column";
+    popup.style.justifyContent = "center";
+    popup.style.alignItems = "center";
 
     let keys = Object.keys(continents);
     console.log(keys);
@@ -67,12 +69,9 @@ function Map() {
       allData.map((region) => {
         keys.map((key) => {
           if (region.continent === key && cont === continents[key]) {
-            popup.innerHTML = `<a style="max-width:15%">New cases: ${region.newCases}</a>
-                              <a style="max-width:15%">New Deaths: ${region.newDeaths}</a>
-                              <a style="max-width:15%">Total cases: ${region.totalCases}</a>
-                              <a style="max-width:15%">Total deaths: ${region.totalDeaths}</a>
-                              <a style="max-width:15%">Recovered: ${region.totalRecovered}</a>
-                            `;
+            popup.innerHTML = `<p>New cases: ${region.newCases}</p>
+                              <p> Total cases: ${region.totalCases}</p>
+                              <p> Total deaths: ${region.totalDeaths}</p>`;
           }
         });
       });
