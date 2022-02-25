@@ -30,11 +30,15 @@ function Map() {
   }, []);
 
   const setTooltipCoords = (e) => {
-    const popup = document.getElementById("displayText");
-    console.log(popup);
-    popup.style.position = "absolute";
-    popup.style.top = (e.clientY - 130).toString() + "px";
-    popup.style.left = (e.clientX - 110).toString() + "px";
+    if (selected) {
+      const popup = document.getElementById("displayText");
+      console.log(popup);
+      popup.style.position = "absolute";
+      popup.style.top =
+        ((e.clientY * 100) / window.innerHeight).toString() + "%";
+      popup.style.left =
+        ((e.clientX * 100) / window.innerWidth).toString() + "%";
+    }
   };
 
   const getMyToolTipFunction = (cont) => {

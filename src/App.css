@@ -721,14 +721,17 @@ footer {
     margin-top: -3em;
   }
 
+  /* MAP TOOLTIP*/
+
   .displayText {
-    max-height: 43%;
+    max-height: 50%;
     margin-top: -75px;
   }
 
-  .displayText a {
-    font-size: smaller;
-    margin: 0.25em;
+  .displayText p {
+    font-size: 0.95em;
+    font-weight: bold;
+    margin: 3px;
   }
 }
 @media screen and (min-width: 501px) and (max-width: 600px) {
