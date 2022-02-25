@@ -491,13 +491,8 @@ svg.map-img:hover {
   z-index: 0;
 }
 .displayText {
-  position: absolute;
-  top: 50%;
-  left: 95%;
-  height: 80%;
   max-width: 20%;
   font-size: smaller;
-  /* margin-top: -180px; */
   background-color: rgba(184, 202, 206, 0.9);
   color: rgb(59, 93, 104);
   text-align: center;

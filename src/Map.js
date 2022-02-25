@@ -1,9 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
-
-// import Tooltip from "react-bootstrap/Tooltip";
-// import Overlay from "react-bootstrap/Overlay";
-// import Button from "react-bootstrap/Button";
 import WorldMap from "react-world-map";
 import Key from "./keys";
 
@@ -33,6 +29,14 @@ function Map() {
       });
   }, []);
 
+  const setTooltipCoords = (e) => {
+    const popup = document.getElementById("displayText");
+    console.log(popup);
+    popup.style.position = "absolute";
+    popup.style.top = (e.clientY - 130).toString() + "px";
+    popup.style.left = (e.clientX - 110).toString() + "px";
+  };
+
   const getMyToolTipFunction = (cont) => {
     onSelect(cont);
     selectionIndex.current += 1;
@@ -57,11 +61,6 @@ function Map() {
       Europe: "eu",
       Africa: "af",
     };
-
-    popup.style.display = "flex";
-    popup.style.flexDirection = "column";
-    popup.style.justifyContent = "center";
-    popup.style.alignItems = "center";
 
     let keys = Object.keys(continents);
     console.log(keys);
@@ -91,7 +90,7 @@ function Map() {
       <h5 id="heading-reg-data" className="pb-2 my-3">
         See stats (click) on each continent
       </h5>
-      <div className="class">
+      <div className="class" onClick={(e) => setTooltipCoords(e)}>
         <WorldMap
           selected={selected}
           onSelect={(cont) => getMyToolTipFunction(cont)}
