@@ -6,7 +6,6 @@ import Breadcrumbs from "./Breadcrumbs";
 const Navbar = (props) => {
   const [showmenu, setMenu] = useState(true);
   const [bread, setBread] = useState([]);
-  const [direction, setDirection] = useState("horizontal");
 
   const nollstall = () => {
     setBread([]);
@@ -50,10 +49,6 @@ const Navbar = (props) => {
               onClick={() => getHamburger()}
             ></NavLink>
             <ul id="initiallist">
-              {/* <li label="Advices">
-                {" "}
-                <NavLink to={"/advices"}></NavLink>
-              </li> */}
               <li label="Most Infected Countries">
                 <NavLink onClick={() => getHamburger()} to={"/contagionlist"}>
                   Infected Countries

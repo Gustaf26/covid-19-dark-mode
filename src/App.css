@@ -434,7 +434,7 @@ table {
   border-collapse: collapse;
 }
 
-.countryinfo th {
+th {
   background-color: #949da0;
   color: #f1efef;
 }
@@ -514,7 +514,7 @@ footer {
 }
 @media screen and (min-width: 200px) and (max-width: 400px) {
   .openbtn {
-    font-size: 1.05rem;
+    font-size: 0.85em;
   }
   th,
   td {
@@ -620,7 +620,7 @@ footer {
     text-align: center;
   }
   .openbtn {
-    min-width: 80px;
+    max-width: 80px;
   }
 
   .forma {
