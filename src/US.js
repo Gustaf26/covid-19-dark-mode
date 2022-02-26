@@ -5,6 +5,8 @@ import Key from "./keys";
 class ContagionList extends React.Component {
   state = {
     data: [],
+    selected: [],
+    index: 0,
   };
 
   componentDidMount = () => {
@@ -47,15 +49,44 @@ class ContagionList extends React.Component {
     //let doubleselectarr = selectarr.filter(cit=>cit.city =="")
     //console.log(globalarr)
     let sortedarr = usarr.filter((pers) => pers.deaths > 3000);
-
     this.setState({ data: sortedarr });
+    this.setState({ selected: sortedarr.slice(0, 11) });
+    this.setState({ index: 10 });
+  };
+
+  selectEntries = (arg) => {
+    if (arg == "next") {
+      if (
+        this.state.selected.length < this.state.data.length &&
+        this.state.index < this.state.data.length
+      ) {
+        this.setState({
+          selected: this.state.data.slice(
+            this.state.index,
+            this.state.index + 10
+          ),
+        });
+        this.setState({ index: this.state.index + 10 });
+      }
+    } else {
+      if (this.state.index == 10) {
+        return;
+      }
+      this.setState({
+        selected: this.state.data.slice(
+          this.state.index - 20,
+          this.state.index - 10
+        ),
+      });
+      this.setState({ index: this.state.index - 10 });
+    }
   };
 
   render() {
-    const list = this.state.data.map((cas, i) => {
+    const list = this.state.selected.map((cas, i) => {
       return (
         <tr key={i}>
-          <td>{cas.city}</td>
+          {/* <td>{cas.city}</td> */}
           <td>{cas.province}</td>
           <td>{cas.confirmed}</td>
           <td>{cas.deaths}</td>
@@ -71,7 +102,7 @@ class ContagionList extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>CITY</th>
+              {/* <th>CITY</th> */}
               <th>PROVINCE</th>
               <th>CONFIRMED</th>
               <th>CASUALTIES</th>
@@ -80,6 +111,20 @@ class ContagionList extends React.Component {
           </thead>
           <tbody>{list}</tbody>
         </table>
+        <div>
+          <button
+            className="backToTop"
+            onClick={() => this.selectEntries("prev")}
+          >
+            Prev
+          </button>
+          <button
+            className="backToTop"
+            onClick={() => this.selectEntries("next")}
+          >
+            Next
+          </button>
+        </div>
       </div>
     );
   }

@@ -434,7 +434,7 @@ table {
   border-collapse: collapse;
 }
 
-th {
+.countryinfo th {
   background-color: #949da0;
   color: #f1efef;
 }
