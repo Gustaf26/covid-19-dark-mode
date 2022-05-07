@@ -427,7 +427,7 @@ button {
   border-radius: 10px;
 }
 
-/*TABLE TOP 10 COUNTRIES*/
+/*TABLE TOP 10 COUNTRIES AND US*/
 
 table {
   font-family: arial, sans-serif;
@@ -504,7 +504,7 @@ svg.map-img:hover {
 
 .animated {
   animation-name: popup;
-  animation-duration: 5s;
+  animation-duration: 10s;
   animation-timing-function: linear;
 }
 
