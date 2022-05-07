@@ -7,6 +7,9 @@ function Map() {
   const [allData, setAllData] = useState("")
   const [toolTip, setTooltip] = useState("")
   const [animating, setAnimating] = useState(false)
+  const [newCases, setCases] = useState(0)
+  const [total, setTotal] = useState(0)
+  const [rips, setRips] = useState(0)
   const selectionIndex = useRef(0)
 
   useEffect(() => {
@@ -61,6 +64,7 @@ function Map() {
     }
 
     setTooltip(true)
+    setCases(0)
 
     let continents = {
       "North America": "na",
@@ -72,14 +76,15 @@ function Map() {
     }
 
     let keys = Object.keys(continents)
-    console.log(keys)
+
+    let count1 = 0
     if (allData.length) {
       allData.map(region => {
         keys.map(key => {
           if (region.continent === key && cont === continents[key]) {
-            popup.innerHTML = `<p>New cases: ${region.newCases}</p>
-                              <p> Total cases: ${region.totalCases}</p>
-                              <p> Total deaths: ${region.totalDeaths}</p>`
+            setTotal(region.totalCases)
+            setRips(region.totalDeaths)
+            setCases(region.newCases)
           }
         })
       })
@@ -107,7 +112,11 @@ function Map() {
           selected={selected}
           onSelect={cont => getMyToolTipFunction(cont)}
         />
-        <span className="displayText w-100" id="displayText"></span>
+        <span className="displayText w-100" id="displayText">
+          <p> New cases: {newCases}</p>
+          <p> Total cases: {total}</p>
+          <p> Total deaths: {rips}</p>
+        </span>
       </div>
     </>
   )
