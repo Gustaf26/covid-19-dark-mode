@@ -6,6 +6,7 @@ function Map() {
   const [selected, onSelect] = useState(null)
   const [allData, setAllData] = useState("")
   const [toolTip, setTooltip] = useState("")
+  const [animating, setAnimating] = useState(false)
   const selectionIndex = useRef(0)
 
   useEffect(() => {
@@ -34,18 +35,20 @@ function Map() {
     if (selected) {
       popup.style.position = "absolute"
       popup.classList.add("animated")
-      popup.style.top =
-        ((e.clientY * 100) / window.innerHeight).toString() + "%"
-      popup.style.left =
-        ((e.clientX * 100) / window.innerWidth).toString() + "%"
+      // popup.style.top =
+      //   ((e.clientY * 100) / window.innerHeight).toString() + "%"
+      // popup.style.left =
+      //   ((e.clientX * 100) / window.innerWidth).toString() + "%"
     }
     setTimeout(() => {
       popup.classList.remove("animated")
-    }, 4000)
+      setAnimating(false)
+    }, 5000)
   }
 
   const getMyToolTipFunction = cont => {
     onSelect(cont)
+    setAnimating(true)
     selectionIndex.current += 1
 
     const popup = document.getElementById("displayText")
@@ -56,7 +59,7 @@ function Map() {
       popup.style.position = "absolute"
       popup.classList.add("animated")
       popup.style.top = (window.innerHeight / 2).toString() + "px"
-      popup.style.left = (window.innerWidth / 2).toString() + "px"
+      popup.style.left = "35%"
     }
     if (!cont) {
       popup.toggleAttribute("hidden")
@@ -104,14 +107,15 @@ function Map() {
       <h5 id="heading-reg-data" className="pb-2 my-3">
         See stats (click) on each continent
       </h5>
-      <div className="class" onClick={e => setTooltipCoords(e)}>
+      <div
+        className="class"
+        onClick={!animating ? e => setTooltipCoords(e) : null}
+      >
         <WorldMap
           selected={selected}
           onSelect={cont => getMyToolTipFunction(cont)}
         />
-        <span className="displayText w-100" id="displayText">
-          Please double click again
-        </span>
+        <span className="displayText w-100" id="displayText"></span>
       </div>
     </>
   )
