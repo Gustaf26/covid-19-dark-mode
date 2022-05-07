@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Moment from "react-moment";
-import Key from "./keys";
+import React, { useEffect, useState } from "react"
+import Moment from "react-moment"
 
 const ContagionList = () => {
-  const [data, setData] = useState([]);
-  const [selected, setSelected] = useState([]);
-  const [index, setIndex] = useState(0);
-  const [clicked, setClicked] = useState(false);
+  const [data, setData] = useState([])
+  const [selected, setSelected] = useState([])
+  const [index, setIndex] = useState(0)
+  const [clicked, setClicked] = useState(false)
 
-  const processData = (dat) => {
-    let globalarr = [];
+  const processData = dat => {
+    let globalarr = []
 
-    let j;
+    let j
 
     for (j = 0; j < dat.data.covid19Stats.length; j++) {
       globalarr.push({
@@ -21,21 +20,21 @@ const ContagionList = () => {
         recovered: dat.data.covid19Stats[j].recovered,
         deaths: dat.data.covid19Stats[j].deaths,
         timestamp: dat.data.covid19Stats[j].lastUpdate,
-      });
+      })
     }
 
     let selectarr = globalarr.filter(
-      (cou) => cou.country !== "US" && cou.country !== "China"
-    );
+      cou => cou.country !== "US" && cou.country !== "China"
+    )
 
     //let doubleselectarr = selectarr.filter(cit=>cit.city =="")
     //console.log(globalarr)
-    let sortedarr = selectarr.filter((pers) => pers.deaths > 20000);
+    let sortedarr = selectarr.filter(pers => pers.deaths > 20000)
 
-    setData({ data: sortedarr });
-    setSelected({ data: sortedarr.slice(0, 11) });
-    setIndex(10);
-  };
+    setData({ data: sortedarr })
+    setSelected({ data: sortedarr.slice(0, 11) })
+    setIndex(10)
+  }
 
   useEffect(() => {
     fetch(
@@ -44,31 +43,31 @@ const ContagionList = () => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-          "x-rapidapi-key": `${Key.Key}`,
+          "x-rapidapi-key": `${process.env.REACT_APP_API_KEY}`,
         },
       }
     )
-      .then((response) => response.json())
-      .then((data) => processData(data))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+      .then(response => response.json())
+      .then(data => processData(data))
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
 
-  const selectEntries = (arg) => {
+  const selectEntries = arg => {
     if (arg == "next") {
       if (selected.data.length < data.data.length && index < data.data.length) {
-        setSelected({ data: data.data.slice(index, index + 10) });
-        setIndex(index + 10);
+        setSelected({ data: data.data.slice(index, index + 10) })
+        setIndex(index + 10)
       }
     } else {
       if (index == 10) {
-        return;
+        return
       }
-      setSelected({ data: data.data.slice(index - 20, index - 10) });
-      setIndex(index - 10);
+      setSelected({ data: data.data.slice(index - 20, index - 10) })
+      setIndex(index - 10)
     }
-  };
+  }
 
   return (
     <div>
@@ -99,7 +98,7 @@ const ContagionList = () => {
                       <Moment durationFromNow>{cas.timestamp}</Moment> from now
                     </td>
                   </tr>
-                );
+                )
               })}
           </tbody>
         </table>
@@ -116,7 +115,7 @@ const ContagionList = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ContagionList;
+export default ContagionList

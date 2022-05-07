@@ -1,21 +1,20 @@
 // import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { withStyles, makeStyles } from "@mui/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import React, { useState, useEffect } from "react"
+import { withStyles, makeStyles } from "@mui/styles"
+import Table from "@mui/material/Table"
+import TableBody from "@mui/material/TableBody"
+import TableCell from "@mui/material/TableCell"
+import TableContainer from "@mui/material/TableContainer"
+import TableHead from "@mui/material/TableHead"
+import TableRow from "@mui/material/TableRow"
+import Paper from "@mui/material/Paper"
 
-import Moment from "react-moment";
-import Key from "./keys";
-import "./App.css";
+import Moment from "react-moment"
+import "./App.css"
 
 // import Travelrec from "./Travelrec";
 
-const StyledTableCell = withStyles((theme) => ({
+const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
@@ -26,35 +25,35 @@ const StyledTableCell = withStyles((theme) => ({
     fontSize: window.innerWidth > 600 ? 14 : 12,
     padding: window.innerWidth > 700 ? "0.5em" : "0.2em",
   },
-}))(TableCell);
+}))(TableCell)
 
-const StyledTableRow = withStyles((theme) => ({
+const StyledTableRow = withStyles(theme => ({
   root: {
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
   },
-}))(TableRow);
+}))(TableRow)
 
 const useStyles = makeStyles({
   table: {
     minWidth: 300,
   },
-});
+})
 
 const CountrySearch = () => {
-  const [data, setData] = useState([]);
-  const [country, setCountry] = useState("");
-  const [showsearch, setSearch] = useState("");
-  const [errormsg, setError] = useState(false);
+  const [data, setData] = useState([])
+  const [country, setCountry] = useState("")
+  const [showsearch, setSearch] = useState("")
+  const [errormsg, setError] = useState(false)
   // const [rawData, setRawData] = useState([]);
   // const [showRecs, setRecs] = useState(false);
   // const [travelData, setTravelData] = useState([]);
-  const [setClasses, classes] = useState(useStyles());
-  const [countryData, setCountryData] = useState("");
+  const [setClasses, classes] = useState(useStyles())
+  const [countryData, setCountryData] = useState("")
 
   useEffect(() => {
-    setSearch(true);
+    setSearch(true)
 
     //   axios
     //     .get("https://www.trackcorona.live/api/travel", {
@@ -67,17 +66,17 @@ const CountrySearch = () => {
     //     })
     //     .then((res) => setData(res.data.data))
     //     .catch((err) => console.log(err));
-  }, []);
+  }, [])
 
-  const getFromApi = (e) => {
-    e.preventDefault();
+  const getFromApi = e => {
+    e.preventDefault()
 
-    setSearch(false);
+    setSearch(false)
 
     if (country === "") {
-      setError(true);
+      setError(true)
 
-      return;
+      return
     }
 
     fetch(
@@ -86,40 +85,40 @@ const CountrySearch = () => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-          "x-rapidapi-key": `${Key.Key}`,
+          "x-rapidapi-key": `${process.env.REACT_APP_API_KEY}`,
         },
       }
     )
-      .then((response) => response.json())
-      .then((data) => outputting(data))
-      .catch((err) => {
+      .then(response => response.json())
+      .then(data => outputting(data))
+      .catch(err => {
         alert(
           "You might have misspelled the name of the country. Please, try again"
-        );
-      });
-  };
+        )
+      })
+  }
 
-  const changeCountry = (e) => {
-    setCountry(e.target.value);
-    setData([]);
-  };
+  const changeCountry = e => {
+    setCountry(e.target.value)
+    setData([])
+  }
 
-  const outputting = (dat) => {
+  const outputting = dat => {
     if (!dat.data.covid19Stats.length < 218 && country) {
-      let dataarr = [...data];
+      let dataarr = [...data]
 
       if (
         !dat.data.covid19Stats ||
         dat.data.covid19Stats[0].country === "US" ||
         dat.data.covid19Stats[0].country !== country
       ) {
-        setError(true);
-        return;
+        setError(true)
+        return
       }
 
-      console.log(dat.data);
+      console.log(dat.data)
 
-      dataarr = dat.data.covid19Stats.map((region) => {
+      dataarr = dat.data.covid19Stats.map(region => {
         return {
           region: region,
           province: region.province,
@@ -127,8 +126,8 @@ const CountrySearch = () => {
           recovered: region.recovered,
           deaths: region.deaths,
           timestamp: region.lastUpdate,
-        };
-      });
+        }
+      })
 
       // let travelInfoArr;
       // travelInfoArr = [];
@@ -140,15 +139,15 @@ const CountrySearch = () => {
       //   setTravelData(travelInfoArr);
       // });
 
-      setData(dataarr);
+      setData(dataarr)
     }
-  };
+  }
 
   const newSearch = () => {
-    setCountry("");
-    setSearch(true);
-    setError(false);
-  };
+    setCountry("")
+    setSearch(true)
+    setError(false)
+  }
   // const showRecommendations = () => {
   //   setRecs(!showRecs);
   // };
@@ -168,8 +167,8 @@ const CountrySearch = () => {
           </StyledTableRow>
         </TableBody>
       ))
-    );
-  }, [data]);
+    )
+  }, [data])
 
   return (
     <div>
@@ -180,7 +179,7 @@ const CountrySearch = () => {
             <input
               id="countryruta"
               type="text"
-              onChange={(e) => changeCountry(e)}
+              onChange={e => changeCountry(e)}
             />
             <button id="countrysearchbtn" type="submit">
               Search
@@ -232,7 +231,7 @@ const CountrySearch = () => {
         <Travelrec travelData={travelData} closeRecs={showRecommendations} />
       )} */}
     </div>
-  );
-};
+  )
+}
 
-export default CountrySearch;
+export default CountrySearch
