@@ -35,15 +35,7 @@ function Map() {
     if (selected) {
       popup.style.position = "absolute"
       popup.classList.add("animated")
-      // popup.style.top =
-      //   ((e.clientY * 100) / window.innerHeight).toString() + "%"
-      // popup.style.left =
-      //   ((e.clientX * 100) / window.innerWidth).toString() + "%"
     }
-    setTimeout(() => {
-      popup.classList.remove("animated")
-      setAnimating(false)
-    }, 5000)
   }
 
   const getMyToolTipFunction = cont => {
