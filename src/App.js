@@ -55,13 +55,13 @@ function App() {
                 <Route path="/world" element={<Map />} />
               </Routes>
             </div>
-            {warning && (
+            {/* {warning && (
               <div id="warn">
                 <h5>
                   ATTENTION: Please check the time update for the data delivered
                 </h5>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </BrowserRouter>
