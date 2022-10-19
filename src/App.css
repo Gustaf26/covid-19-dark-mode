@@ -44,7 +44,7 @@ a#logo {
   max-height: 3rem;
   background-image: url("./assets/viruspic-removebg.png");
   background-size: cover;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   /* background-position: 10px; */
   padding: 1.3rem 1.45rem 1.3rem 1.3rem;
   margin-top: -1rem;
@@ -198,7 +198,7 @@ ul#initiallist li a:hover {
 }
 
 ul#initiallist li a.active {
-  background: white;
+  background: rgb(191, 183, 238);
   color: #050505 !important;
 }
 
@@ -207,7 +207,7 @@ ul#initiallist li a {
   padding: 0.5rem;
   font-size: 1em;
   border-radius: 10px;
-  color: rgb(255, 255, 255);
+  color: rgb(191, 183, 238);
   width: 100%;
   height: 100%;
 }
@@ -450,7 +450,7 @@ table {
 }
 
 .countryinfo th {
-  background-color: #949da0;
+  background-color: #3f3a5ce6;
   color: #f1efef;
 }
 
@@ -462,7 +462,7 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #9689dc;
 }
 
 tr:nth-child(odd) {
@@ -478,10 +478,7 @@ svg.map-img {
   margin-top: 1.5rem;
   border-radius: 10px;
   min-height: 400px;
-  background: linear-gradient(
-    rgba(160, 195, 197, 0.6),
-    rgba(113, 131, 145, 0.6)
-  );
+  background: #796eb1e4;
 }
 
 svg.map-img:hover {
