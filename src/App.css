@@ -193,8 +193,8 @@ span.advice-highlights {
 }
 
 ul#initiallist li a:hover {
-  background: rgb(204, 202, 202);
-  color: #050505 !important;
+  background: rgba(92, 84, 135, 0.8);
+  color: rgb(191, 183, 238) !important;
 }
 
 ul#initiallist li a.active {
