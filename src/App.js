@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Home";
-import CountrySearch from "./CountrySearch";
-import ContagionList from "./ContagionList";
-import Map from "./Map";
-import US from "./US";
-import "./App.css";
+import React, { useState, useEffect } from "react"
+import Navbar from "./Navbar"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Home from "./Home"
+import CountrySearch from "./CountrySearch"
+import ContagionList from "./ContagionList"
+import Map from "./Map"
+import US from "./US"
+import "./App.css"
 
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles"
 
 const theme = createTheme({
   palette: {
@@ -16,26 +16,26 @@ const theme = createTheme({
       main: "#ffffff",
     },
   },
-});
+})
 
 function App() {
-  const [text, setAdtext] = useState("");
-  const [warning, setWarning] = useState(true);
+  const [text, setAdtext] = useState("")
+  const [warning, setWarning] = useState(true)
 
   const closeWarning = () => {
-    setWarning(false);
-  };
+    setWarning(false)
+  }
   const openwarning = () => {
-    setWarning(true);
-  };
+    setWarning(true)
+  }
 
   useEffect(() => {
     if (window.innerWidth > 1000) {
-      openwarning();
+      openwarning()
     } else {
-      closeWarning();
+      closeWarning()
     }
-  });
+  })
 
   return (
     <ThemeProvider theme={theme}>
@@ -45,6 +45,7 @@ function App() {
             <Navbar closeWarn={closeWarning} openWarn={openwarning} />
           </header>
           <div className="container">
+            <div className="dummy-container"></div>
             <div className="routcont">
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -65,7 +66,7 @@ function App() {
         </div>
       </BrowserRouter>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App
