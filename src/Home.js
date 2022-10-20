@@ -1,5 +1,5 @@
-import React from "react";
-import Moment from "react-moment";
+import React from "react"
+import Moment from "react-moment"
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
         <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment> ago
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

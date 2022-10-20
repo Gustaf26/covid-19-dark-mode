@@ -1,78 +1,77 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
 
-import Breadcrumbs from "./Breadcrumbs";
+import Breadcrumbs from "./Breadcrumbs"
+import Moment from "react-moment"
 
-const Navbar = (props) => {
-  const [showmenu, setMenu] = useState(true);
-  const [bread, setBread] = useState([]);
+const Navbar = props => {
+  const [showmenu, setMenu] = useState(true)
+  const [bread, setBread] = useState([])
 
   const nollstall = () => {
-    setBread([]);
-    props.reopenadvice();
-  };
+    setBread([])
+    props.reopenadvice()
+  }
 
-  const openmenu = (e) => {
-    e.preventDefault();
-    setMenu(true);
-    setBread([]);
-  };
+  const openmenu = e => {
+    e.preventDefault()
+    setMenu(true)
+    setBread([])
+  }
 
   const getHamburger = () => {
     if (window.innerWidth < 600) {
-      setMenu(!showmenu);
+      setMenu(!showmenu)
     }
-  };
+  }
 
   useEffect(() => {
-    getHamburger();
-  }, []);
+    getHamburger()
+  }, [])
 
   return (
     <div className="routcont2">
       <div id="overmenurow">
+        <p id="countdown-outbreak">
+          The outbreak was first reported to World Health Organisation{" "}
+          <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment> ago
+        </p>
         {showmenu === false ? (
-          <button
-            type="submit"
-            className="openbtn"
-            onClick={(e) => openmenu(e)}
-          >
+          <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
             ☰
           </button>
         ) : null}
 
         {showmenu === true ? (
-          <div id="navbar_div">
+          <ul id="initiallist">
             <NavLink
               id="logo"
               to={"/"}
               onClick={() => getHamburger()}
             ></NavLink>
-            <ul id="initiallist">
-              <li label="Most Infected Countries">
-                <NavLink onClick={() => getHamburger()} to={"/contagionlist"}>
-                  Infected Countries
-                </NavLink>
-              </li>
-              <li label="Search By Country">
-                <NavLink onClick={() => getHamburger()} to={"/countrysearch"}>
-                  Search By Country
-                </NavLink>
-              </li>
-              <li label="U.S.">
-                {" "}
-                <NavLink onClick={() => getHamburger()} to={"/us"}>
-                  US
-                </NavLink>
-              </li>
-              <li label="World Map">
-                {" "}
-                <NavLink onClick={() => getHamburger()} to={"/world"}>
-                  World map
-                </NavLink>
-              </li>
-            </ul>
-          </div>
+            <li label="Most Infected Countries">
+              <NavLink onClick={() => getHamburger()} to={"/contagionlist"}>
+                Infected Countries
+              </NavLink>
+            </li>
+            <li label="Search By Country">
+              <NavLink onClick={() => getHamburger()} to={"/countrysearch"}>
+                Search By Country
+              </NavLink>
+            </li>
+            <li label="U.S.">
+              {" "}
+              <NavLink onClick={() => getHamburger()} to={"/us"}>
+                US
+              </NavLink>
+            </li>
+            <li label="World Map">
+              {" "}
+              <NavLink onClick={() => getHamburger()} to={"/world"}>
+                World map
+              </NavLink>
+            </li>
+          </ul>
         ) : null}
 
         {bread.length ? (
@@ -80,7 +79,7 @@ const Navbar = (props) => {
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

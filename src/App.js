@@ -48,20 +48,13 @@ function App() {
             <div className="dummy-container"></div>
             <div className="routcont">
               <Routes>
-                <Route path="/" element={<Home />} />
+                {/* <Route path="/" element={<Home />} /> */}
                 <Route path="/countrysearch" element={<CountrySearch />} />
                 <Route path="/contagionlist" element={<ContagionList />} />
                 <Route path="/us" element={<US />} />
                 <Route path="/world" element={<Map />} />
               </Routes>
             </div>
-            {/* {warning && (
-              <div id="warn">
-                <h5>
-                  ATTENTION: Please check the time update for the data delivered
-                </h5>
-              </div>
-            )} */}
           </div>
         </div>
       </BrowserRouter>
