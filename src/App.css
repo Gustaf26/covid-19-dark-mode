@@ -39,22 +39,25 @@ body {
   font-size: calc(14px + 2vmin);
 }
 
-a#logo {
-  max-width: 3rem;
-  max-height: 3rem;
+#initiallist li a#logo {
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   background-image: url("./assets/viruspic-removebg.png");
   background-size: cover;
   /* filter: grayscale(100%); */
   /* background-position: 10px; */
-  padding: 1.3rem 1.45rem 1.3rem 1.3rem;
+  /* padding: 1.3rem 1.45rem 1.3rem 1.3rem; */
   margin-top: -1rem;
+  background-color: #050505e0;
 }
 
 .routcont2 {
   display: flex;
   flex-direction: row;
-  align-items: left;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
   margin: 0 auto;
   padding-left: 3%;
 }
@@ -178,26 +181,15 @@ span.advice-highlights {
 
 /*NAVBAR*/
 
-/* #navbar_div {
-  position: absolute;
-  bottom: 4%;
-  max-width: 70vw;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  height: 12vh;
-} */
-
 #initiallist {
   padding: 0;
   position: absolute;
-  bottom: -10%;
-  margin-top: 2rem;
-  /* margin-bottom: 2rem; */
-  margin-left: 10%;
+  bottom: 0;
+  margin: 2rem 0 0 0;
   height: 60px;
   border-radius: 5px;
-  /* background-color: #050505; */
+  align-items: center;
+  justify-content: center;
   opacity: 0.8;
 }
 
@@ -209,6 +201,10 @@ ul#initiallist li a:hover {
 ul#initiallist li a.active {
   background: rgb(191, 183, 238);
   color: #050505 !important;
+}
+
+ul#initiallist li {
+  margin-right: 1rem;
 }
 
 ul#initiallist li a {
@@ -848,7 +844,7 @@ footer {
 @media screen and (min-width: 601px) and (max-width: 1100px) {
   #initiallist {
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
