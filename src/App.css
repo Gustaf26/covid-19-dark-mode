@@ -105,8 +105,8 @@ body {
 }
 
 #countdown-outbreak {
-  position: absolute;
-  top: -14%;
+  position: fixed;
+  top: 0;
   left: 0;
   font-weight: bold;
   background-color: #875475;
@@ -114,7 +114,18 @@ body {
   opacity: 0.8;
   padding: 1rem;
   color: black;
-  width: 100vw;
+  width: 200vw;
+  z-index: 6;
+  animation: moveleft 10s linear infinite;
+}
+
+@keyframes moveleft {
+  from {
+    transform: translateX(0vw);
+  }
+  to {
+    transform: translateX(-100vw);
+  }
 }
 
 .usefulLinks li {

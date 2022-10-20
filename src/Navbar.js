@@ -4,9 +4,17 @@ import { NavLink } from "react-router-dom"
 import Breadcrumbs from "./Breadcrumbs"
 import Moment from "react-moment"
 
+let outbreakMsgsArray = [
+  "The outbreak was first reported to World Health Organisation ",
+  <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment>,
+  " from now.",
+  "The origin of the virus seems to be traceable to a market in China",
+]
+
 const Navbar = props => {
   const [showmenu, setMenu] = useState(true)
   const [bread, setBread] = useState([])
+  const [outbreakMsgs, setOutbreakMsgs] = useState(outbreakMsgsArray)
 
   const nollstall = () => {
     setBread([])
@@ -31,10 +39,7 @@ const Navbar = props => {
 
   return (
     <div className="routcont2">
-      <p id="countdown-outbreak">
-        The outbreak was first reported to World Health Organisation{" "}
-        <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment> ago
-      </p>
+      <p id="countdown-outbreak">{outbreakMsgs}</p>
       {showmenu === false ? (
         <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
           ☰
