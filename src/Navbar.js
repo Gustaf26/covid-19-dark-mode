@@ -7,6 +7,7 @@ import Moment from "react-moment"
 const Navbar = props => {
   const [showmenu, setMenu] = useState(true)
   const [bread, setBread] = useState([])
+  const [outbreak, setOutbreakMsgs] = useState([])
 
   const nollstall = () => {
     setBread([])
@@ -27,15 +28,28 @@ const Navbar = props => {
 
   useEffect(() => {
     getHamburger()
+    let outBreakIndex = 0
+    setOutbreakMsgs(
+      "The outbreak was first reported to World Health Organisation on Dec 31st 2019"
+    )
+    let otherOutbreakMsgs = [
+      "The outbreak was first reported to World Health Organisation on Dec 31st 2019",
+      "The origin of the virus seems to be traceable to a market in China",
+      "The number of victims corresponds to the same as other pandemics in history",
+      "Different mutations have been spreading, but vaccines have developed as well",
+    ]
+    setInterval(() => {
+      outBreakIndex += 1
+      if (outBreakIndex == otherOutbreakMsgs.length) {
+        outBreakIndex = 0
+      }
+      setOutbreakMsgs(otherOutbreakMsgs[outBreakIndex])
+    }, 10000)
   }, [])
 
   return (
     <div className="routcont2">
-      <p id="countdown-outbreak">
-        The outbreak was first reported to World Health Organisation
-        <Moment date="2019-12-31T12:59-0500" durationFromNow></Moment>, from
-        now. The origin of the virus seems to be traceable to a market in China
-      </p>
+      <p id="countdown-outbreak">{outbreak}</p>
       {showmenu === false ? (
         <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
           ☰
