@@ -93,14 +93,19 @@ class ContagionList extends React.Component {
 
   render() {
     const list = this.state.selected.map((cas, i) => {
+      console.log(cas.timestamp.slice(0, 10).toString())
       return (
         <tr key={i}>
           {" "}
-          {/* <td>{cas.city}</td> */} <td> {cas.province} </td>{" "}
-          <td> {cas.confirmed} </td> <td> {cas.deaths} </td>{" "}
+          <td> {cas.province} </td> <td> {cas.confirmed} </td>{" "}
+          <td> {cas.deaths} </td>{" "}
           <td>
             {" "}
-            <Moment durationFromNow> {cas.timestamp} </Moment> from now{" "}
+            {cas.timestamp !== undefined ? (
+              <Moment parse="YYYY-MM-DD"> {cas.timestamp.slice(0, 10)}</Moment>
+            ) : (
+              <span>No recent update</span>
+            )}
           </td>{" "}
         </tr>
       )
