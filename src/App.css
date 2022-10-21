@@ -114,14 +114,23 @@ body {
   opacity: 0.8;
   padding: 1rem;
   color: black;
-  width: 200vw;
+  width: 100vw;
   height: 7vh;
-  line-height: 1;
   z-index: 6;
+  text-align: right;
 }
 
-#countdown-outbreak.animated {
-  animation: moveleft 10s linear infinite;
+#countdown-outbreak span {
+  position: absolute;
+  text-align: right;
+  width: 150vw;
+  top: 25%;
+  left: 100vw;
+  animation: moveleft 20s linear infinite;
+}
+
+#countdown-outbreak span.not_animated {
+  animation-play-state: paused;
 }
 
 @keyframes moveleft {
@@ -129,7 +138,7 @@ body {
     transform: translateX(0vw);
   }
   to {
-    transform: translateX(-100vw);
+    transform: translateX(-250vw);
   }
 }
 

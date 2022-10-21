@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 import Breadcrumbs from "./Breadcrumbs"
-import Moment from "react-moment"
+// import Moment from "react-moment"
 
+let outbreakMsg =
+  "The outbreak was first reported to World Health Organisation on Dec 31st 2019. The origin of the virus seems to be traceable to a market in China. The number of victims corresponds to the same as other pandemics in history"
 const Navbar = props => {
   const [showmenu, setMenu] = useState(true)
   const [bread, setBread] = useState([])
-  const [outbreak, setOutbreakMsgs] = useState([])
+  const [outbreak, setOutbreakMsgs] = useState(outbreakMsg)
   const [outbreakhovered, setOutbreakHovered] = useState(false)
 
   const nollstall = () => {
@@ -29,27 +31,7 @@ const Navbar = props => {
 
   useEffect(() => {
     getHamburger()
-    let outBreakIndex = 0
-    setOutbreakMsgs(
-      "The outbreak was first reported to World Health Organisation on Dec 31st 2019"
-    )
-    let otherOutbreakMsgs = [
-      "The outbreak was first reported to World Health Organisation on Dec 31st 2019",
-      "The origin of the virus seems to be traceable to a market in China",
-      "The number of victims corresponds to the same as other pandemics in history",
-      "Different mutations have been spreading, but vaccines have developed as well",
-    ]
-    const outbreakInt = setInterval(() => {
-      outBreakIndex += 1
-      if (outBreakIndex == otherOutbreakMsgs.length) {
-        outBreakIndex = 0
-      }
-      setOutbreakMsgs(otherOutbreakMsgs[outBreakIndex])
-    }, 10000)
-    if (outbreakhovered === true) {
-      clearInterval(outbreakInt)
-    }
-  }, [outbreakhovered])
+  }, [])
 
   return (
     <div className="routcont2">
@@ -57,9 +39,10 @@ const Navbar = props => {
         id="countdown-outbreak"
         onMouseOver={() => setOutbreakHovered(true)}
         onMouseOut={() => setOutbreakHovered(false)}
-        className={outbreakhovered == false ? "animated" : ""}
       >
-        {outbreak}
+        <span className={outbreakhovered == false ? "" : "not_animated"}>
+          {outbreak}
+        </span>
       </p>
       {showmenu === false ? (
         <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
