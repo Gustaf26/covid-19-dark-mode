@@ -118,6 +118,9 @@ body {
   height: 7vh;
   line-height: 1;
   z-index: 6;
+}
+
+#countdown-outbreak.animated {
   animation: moveleft 10s linear infinite;
 }
 
@@ -142,6 +145,7 @@ body {
 
 .routcont {
   position: absolute;
+  top: 23vh;
   left: 0%;
   display: flex;
   flex-direction: column;
@@ -199,7 +203,7 @@ span.advice-highlights {
   position: absolute;
   bottom: 0;
   margin: 2rem 0 0 0;
-  height: 60px;
+  height: 10vh;
   border-radius: 5px;
   align-items: center;
   justify-content: center;

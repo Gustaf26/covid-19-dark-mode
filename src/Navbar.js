@@ -8,6 +8,7 @@ const Navbar = props => {
   const [showmenu, setMenu] = useState(true)
   const [bread, setBread] = useState([])
   const [outbreak, setOutbreakMsgs] = useState([])
+  const [outbreakhovered, setOutbreakHovered] = useState(false)
 
   const nollstall = () => {
     setBread([])
@@ -38,18 +39,28 @@ const Navbar = props => {
       "The number of victims corresponds to the same as other pandemics in history",
       "Different mutations have been spreading, but vaccines have developed as well",
     ]
-    setInterval(() => {
+    const outbreakInt = setInterval(() => {
       outBreakIndex += 1
       if (outBreakIndex == otherOutbreakMsgs.length) {
         outBreakIndex = 0
       }
       setOutbreakMsgs(otherOutbreakMsgs[outBreakIndex])
     }, 10000)
-  }, [])
+    if (outbreakhovered === true) {
+      clearInterval(outbreakInt)
+    }
+  }, [outbreakhovered])
 
   return (
     <div className="routcont2">
-      <p id="countdown-outbreak">{outbreak}</p>
+      <p
+        id="countdown-outbreak"
+        onMouseOver={() => setOutbreakHovered(true)}
+        onMouseOut={() => setOutbreakHovered(false)}
+        className={outbreakhovered == false ? "animated" : ""}
+      >
+        {outbreak}
+      </p>
       {showmenu === false ? (
         <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
           ☰
