@@ -37,7 +37,7 @@ const Navbar = props => {
       startTransition(() => {
         setOutbreakMsgs(outbreakMsg)
       })
-    }, 5000)
+    }, 3000)
   }
 
   useEffect(() => {
@@ -56,11 +56,11 @@ const Navbar = props => {
           {!outbreak ? "PANDEMIC STILL GOING ON!" : outbreak}
         </span>
       </p>
-      {showmenu === false ? (
+      {/* {showmenu === false ? (
         <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
           ☰
         </button>
-      ) : null}
+      ) : null} */}
 
       {showmenu === true ? (
         <ul id="initiallist">
@@ -121,7 +121,11 @@ const Navbar = props => {
             </NavLink>
           </li>
         </ul>
-      ) : null}
+      ) : (
+        <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
+          ☰
+        </button>
+      )}
 
       {bread.length ? (
         <Breadcrumbs update={() => nollstall()} actualbread={bread} />

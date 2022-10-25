@@ -123,7 +123,7 @@ body {
 #countdown-outbreak span {
   position: absolute;
   text-align: left;
-  width: 150vw;
+  width: 250vw;
   top: 35%;
   left: 100vw;
   animation: moveleft 20s linear infinite;
@@ -212,14 +212,14 @@ span.advice-highlights {
 /*MENU BUTTON*/
 
 .openbtn {
+  position: absolute;
+  top: 50%;
   border-radius: 5px;
   border: 1px dotted grey;
   font-size: 1.25em;
   background-color: #ffffff;
   color: rgb(88, 87, 87);
   padding: 0.25rem 0.75rem 0.25rem 0.75rem;
-  margin-right: 0.5em;
-  margin-top: 1.25rem;
 }
 
 /*NAVBAR*/
@@ -745,25 +745,30 @@ footer {
 
   #initiallist {
     display: flex;
+    position: absolute;
+    top: 55%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     list-style-type: none;
     font-weight: bold;
     color: black;
-    justify-content: center;
-    margin-top: 45%;
+    justify-content: space-evenly;
+    margin-top: 0;
     margin-left: 40%;
     z-index: 11000;
-    height: 50%;
-    background-color: rgb(77, 78, 78);
+    height: 40vh;
+    background-color: rgba(38, 37, 45, 0.8);
   }
 
   ul#initiallist li {
     padding: 0;
     width: 100%;
-    border: 1px dotted black;
+    height: 20%;
+    border: 1px dotted rgb(51, 47, 75);
     color: white;
+    margin: 0 auto;
   }
 
   /*COUNTRY SEARCH*/
@@ -822,18 +827,28 @@ footer {
 @media screen and (min-width: 501px) and (max-width: 600px) {
   #initiallist {
     display: flex;
+    position: absolute;
+    top: 70%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     list-style-type: none;
     font-weight: bold;
     color: black;
-    justify-content: center;
-    margin-top: 45%;
+    justify-content: space-evenly;
+    margin-top: 0;
     margin-left: 40%;
     z-index: 11000;
-    height: 50%;
-    background-color: rgb(77, 78, 78);
+    height: 40vh;
+    background-color: rgba(92, 84, 135, 0.6);
+  }
+
+  ul#initiallist li {
+    padding: 0;
+    width: 100%;
+    border: 1px dotted rgb(51, 47, 75);
+    color: white;
+    margin: 0 auto;
   }
 
   #warn {
@@ -960,6 +975,21 @@ footer {
 
   ul#initiallist li {
     padding: 1rem;
+  }
+
+  #countdown-outbreak span {
+    position: absolute;
+    text-align: left;
+    width: 450vw;
+    top: 35%;
+    left: 100vw;
+    animation: moveleft 20s linear infinite;
+  }
+
+  #countdown-outbreak span.not_animated {
+    position: absolute;
+    text-align: left;
+    width: 50vw;
   }
 }
 
