@@ -50,9 +50,9 @@ A corona tracker in dark mode using APIs and React
 
 ## :sparkles: Features
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Tracker in all countries;\
+:heavy_check_mark: Tracking in the US;\
+:heavy_check_mark: Separate tracking by country;
 
 ## :rocket: Technologies
 
@@ -71,7 +71,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{Gustaf26}}/corona
+$ git clone https://github.com/{{Gustaf26}}/covid-19-dark-mode
 
 # Access
 $ cd corona
@@ -89,7 +89,7 @@ $ yarn start
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
-Made with :heart: by <a href="https://github.com/{{Gustaf26}}" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/{{Gustaf26}}" target="_blank">{{Gustaf26}}</a>
 
 &#xa0;
 
