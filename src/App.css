@@ -122,15 +122,23 @@ body {
 
 #countdown-outbreak span {
   position: absolute;
-  text-align: right;
+  text-align: left;
   width: 150vw;
-  top: 25%;
+  top: 35%;
   left: 100vw;
   animation: moveleft 20s linear infinite;
 }
 
 #countdown-outbreak span.not_animated {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  text-align: center;
   animation-play-state: paused;
+  width: 20vw;
+  color: black;
+  z-index: 1000;
+  animation: 1s vanish infinite;
 }
 
 @keyframes moveleft {
@@ -139,6 +147,15 @@ body {
   }
   to {
     transform: translateX(-250vw);
+  }
+}
+
+@keyframes vanish {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

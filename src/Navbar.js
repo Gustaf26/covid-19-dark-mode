@@ -11,8 +11,7 @@ const Navbar = props => {
   const [showmenu, setMenu] = useState(true)
   const [isPending, startTransition] = useTransition()
   const [bread, setBread] = useState([])
-  const [outbreak, setOutbreakMsgs] = useState(outbreakMsg)
-  const [outbreakhovered, setOutbreakHovered] = useState(false)
+  const [outbreak, setOutbreakMsgs] = useState()
 
   const nollstall = () => {
     setBread([])
@@ -33,9 +32,11 @@ const Navbar = props => {
 
   useEffect(() => {
     getHamburger()
-    startTransition(() => {
-      setOutbreakHovered(true)
-    })
+    setTimeout(() => {
+      startTransition(() => {
+        setOutbreakMsgs(outbreakMsg)
+      })
+    }, 10000)
   }, [])
 
   return (
@@ -45,8 +46,8 @@ const Navbar = props => {
         // onMouseOver={() => setOutbreakHovered(true)}
         // onMouseOut={() => setOutbreakHovered(false)}
       >
-        <span className={outbreakhovered == false ? "" : "not_animated"}>
-          {outbreak}
+        <span className={!outbreak ? "not_animated" : ""}>
+          {!outbreak ? "PANDEMIC STILL GOING ON!" : outbreak}
         </span>
       </p>
       {showmenu === false ? (
