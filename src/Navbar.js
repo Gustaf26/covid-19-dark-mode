@@ -5,7 +5,7 @@ import Breadcrumbs from "./Breadcrumbs"
 // import Moment from "react-moment"
 
 let outbreakMsg =
-  "The outbreak was first reported to World Health Organisation on Dec 31st 2019. The origin of the virus seems to be traceable to a market in China. The number of victims corresponds to the same as other pandemics in history"
+  "The outbreak was first reported to World Health Organisation on Dec 31st 2019. The origin of the virus seems to be traceable to a market in China. The number of victims corresponds to the same as other pandemics in history. Some countries are still running considerable restrictions. Check your countries authorities for guidance"
 
 const Navbar = props => {
   const [showmenu, setMenu] = useState(true)
@@ -30,13 +30,19 @@ const Navbar = props => {
     }
   }
 
-  useEffect(() => {
-    getHamburger()
+  const showOutBreakMsg = () => {
+    setOutbreakMsgs("")
+
     setTimeout(() => {
       startTransition(() => {
         setOutbreakMsgs(outbreakMsg)
       })
-    }, 10000)
+    }, 5000)
+  }
+
+  useEffect(() => {
+    getHamburger()
+    showOutBreakMsg()
   }, [])
 
   return (
@@ -62,28 +68,55 @@ const Navbar = props => {
             <NavLink
               id="logo"
               to={"/"}
-              onClick={() => getHamburger()}
+              onClick={() => {
+                getHamburger()
+                showOutBreakMsg()
+              }}
             ></NavLink>
           </li>
           <li label="Most Infected Countries">
-            <NavLink onClick={() => getHamburger()} to={"/contagionlist"}>
+            <NavLink
+              onClick={() => {
+                getHamburger()
+                showOutBreakMsg()
+              }}
+              to={"/contagionlist"}
+            >
               Infected Countries
             </NavLink>
           </li>
           <li label="Search By Country">
-            <NavLink onClick={() => getHamburger()} to={"/countrysearch"}>
+            <NavLink
+              onClick={() => {
+                getHamburger()
+                showOutBreakMsg()
+              }}
+              to={"/countrysearch"}
+            >
               Search By Country
             </NavLink>
           </li>
           <li label="U.S.">
             {" "}
-            <NavLink onClick={() => getHamburger()} to={"/us"}>
+            <NavLink
+              onClick={() => {
+                getHamburger()
+                showOutBreakMsg()
+              }}
+              to={"/us"}
+            >
               US
             </NavLink>
           </li>
           <li label="World Map">
             {" "}
-            <NavLink onClick={() => getHamburger()} to={"/world"}>
+            <NavLink
+              onClick={() => {
+                getHamburger()
+                showOutBreakMsg()
+              }}
+              to={"/world"}
+            >
               World map
             </NavLink>
           </li>
