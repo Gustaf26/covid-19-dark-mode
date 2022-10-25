@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useTransition } from "react"
 import { NavLink } from "react-router-dom"
 
 import Breadcrumbs from "./Breadcrumbs"
@@ -6,8 +6,10 @@ import Breadcrumbs from "./Breadcrumbs"
 
 let outbreakMsg =
   "The outbreak was first reported to World Health Organisation on Dec 31st 2019. The origin of the virus seems to be traceable to a market in China. The number of victims corresponds to the same as other pandemics in history"
+
 const Navbar = props => {
   const [showmenu, setMenu] = useState(true)
+  const [isPending, startTransition] = useTransition()
   const [bread, setBread] = useState([])
   const [outbreak, setOutbreakMsgs] = useState(outbreakMsg)
   const [outbreakhovered, setOutbreakHovered] = useState(false)
@@ -31,14 +33,17 @@ const Navbar = props => {
 
   useEffect(() => {
     getHamburger()
+    startTransition(() => {
+      setOutbreakHovered(true)
+    })
   }, [])
 
   return (
     <div className="routcont2">
       <p
         id="countdown-outbreak"
-        onMouseOver={() => setOutbreakHovered(true)}
-        onMouseOut={() => setOutbreakHovered(false)}
+        // onMouseOver={() => setOutbreakHovered(true)}
+        // onMouseOut={() => setOutbreakHovered(false)}
       >
         <span className={outbreakhovered == false ? "" : "not_animated"}>
           {outbreak}
