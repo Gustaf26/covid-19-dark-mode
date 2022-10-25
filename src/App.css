@@ -132,7 +132,8 @@ body {
 #countdown-outbreak span.not_animated {
   position: absolute;
   top: 35%;
-  left: 40%;
+  left: 37%;
+  right: 35%;
   text-align: center;
   animation-play-state: paused;
   width: 20vw;
@@ -290,14 +291,19 @@ button {
 .country_search {
   position: absolute;
   top: 15vh;
-  left: 43%;
-  margin-top: 3rem;
+  left: 30%;
+  right: 35%;
   background: rgba(92, 84, 135, 0.8);
   border-radius: 5px;
   padding: 1rem;
 }
 
-#countryruta {
+.country_search {
+  min-width: 40vw;
+  margin: 0 auto;
+}
+
+#countryinput {
   border-radius: 10px;
   margin: 0 auto;
 }
@@ -622,18 +628,21 @@ footer {
   }
   ul#initiallist {
     display: flex;
+    position: absolute;
+    top: 55%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     list-style-type: none;
-    font-weight: normal;
+    font-weight: bold;
     color: black;
-    justify-content: center;
-    margin-top: 120%;
-    z-index: 1000;
-    height: 55%;
-    background-color: rgb(77, 78, 78);
-    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 0;
+    margin-left: 40%;
+    z-index: 11000;
+    height: 40vh;
+    background-color: rgba(0, 0, 0, 1);
   }
 
   ul#initiallist li {
@@ -654,13 +663,6 @@ footer {
   }
   .country_search h6 {
     color: grey;
-  }
-
-  .country_search input {
-    padding: 0;
-    margin: 1rem auto 1rem auto;
-    max-width: 50%;
-    margin-top: 0.75rem;
   }
 
   #countrysearchbtn {
@@ -759,7 +761,7 @@ footer {
     margin-left: 40%;
     z-index: 11000;
     height: 40vh;
-    background-color: rgba(38, 37, 45, 0.8);
+    background-color: rgba(0, 0, 0, 1);
   }
 
   ul#initiallist li {
@@ -785,11 +787,11 @@ footer {
     border: 1px dotted grey;
   }
 
-  #countryruta {
+  #countryinput {
     border-radius: 10px;
     margin: 0.6em auto;
     padding: 0.1em;
-    max-width: 50%;
+    width: 80%;
   }
 
   /*TABLE*/
@@ -828,7 +830,8 @@ footer {
   #initiallist {
     display: flex;
     position: absolute;
-    top: 70%;
+    top: 55%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -840,7 +843,7 @@ footer {
     margin-left: 40%;
     z-index: 11000;
     height: 40vh;
-    background-color: rgba(92, 84, 135, 0.6);
+    background-color: rgba(0, 0, 0, 1);
   }
 
   ul#initiallist li {
@@ -866,11 +869,11 @@ footer {
     padding-bottom: 0.3rem;
   }
 
-  #countryruta {
+  #countryinput {
     border-radius: 10px;
     margin: 0.2em auto;
     padding: 0.1em;
-    max-width: 50%;
+    width: 80%;
   }
 
   #countrysearchbtn {
@@ -920,11 +923,11 @@ footer {
     font-size: 0.8em;
     padding: 0.4em;
   }
-  #countryruta {
+  #countryinput {
     border-radius: 10px;
     margin: 0.2em auto;
     padding: 0.3em;
-    max-width: 50%;
+    width: 80%;
   }
 
   #countrysearchbtn {
@@ -975,6 +978,7 @@ footer {
 
   ul#initiallist li {
     padding: 1rem;
+    height: 25%;
   }
 
   #countdown-outbreak span {

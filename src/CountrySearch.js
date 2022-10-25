@@ -177,7 +177,7 @@ const CountrySearch = () => {
           <h6>ENTER COUNTRY NAME (Excepting China and the US)</h6>
           <form className="forma" onSubmit={getFromApi}>
             <input
-              id="countryruta"
+              id="countryinput"
               type="text"
               onChange={e => changeCountry(e)}
             />
