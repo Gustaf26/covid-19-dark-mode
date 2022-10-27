@@ -48,7 +48,7 @@ function App() {
             <div className="dummy-container"></div>
             <div className="routcont">
               <Routes>
-                {/* <Route path="/" element={<Home />} /> */}
+                <Route path="/" element={<Home />} />
                 <Route path="/countrysearch" element={<CountrySearch />} />
                 <Route path="/contagionlist" element={<ContagionList />} />
                 <Route path="/us" element={<US />} />
