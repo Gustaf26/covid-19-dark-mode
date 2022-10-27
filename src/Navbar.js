@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useTransition } from "react"
+import React, { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 import Breadcrumbs from "./Breadcrumbs"
@@ -9,7 +9,7 @@ let outbreakMsg =
 
 const Navbar = props => {
   const [showmenu, setMenu] = useState(true)
-  const [isPending, startTransition] = useTransition()
+  const [isPending, startTrans] = useState()
   const [bread, setBread] = useState([])
   const [outbreak, setOutbreakMsgs] = useState()
 
@@ -34,7 +34,7 @@ const Navbar = props => {
     setOutbreakMsgs("")
 
     setTimeout(() => {
-      startTransition(() => {
+      startTrans(() => {
         setOutbreakMsgs(outbreakMsg)
       })
     }, 3000)
