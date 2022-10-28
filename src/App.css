@@ -93,12 +93,12 @@ body {
 }
 
 p {
-  color: rgba(120, 98, 235, 0.5);
+  color: #8783a2;
 }
 
 #home-charts {
   position: absolute;
-  top: -6rem;
+  top: -7rem;
   padding: 1rem;
   margin: 7% auto;
   background-color: rgba(92, 84, 135, 0.8);
