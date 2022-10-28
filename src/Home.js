@@ -3,40 +3,6 @@ import Moment from "react-moment"
 import { Chart, registerables } from "chart.js"
 Chart.register(...registerables)
 
-// const DATA_COUNT = 12
-// const NUMBER_CFG = {
-//   count: DATA_COUNT,
-//   min: 0,
-//   max: 10000000,
-//   continuity: 10000000,
-// }
-
-// let cassualties = [29387, 879317, 39872]
-
-// function numbers(config) {
-//   var cfg = config
-//   var min = cfg.min || 0
-//   var max = cfg.max || 10000000
-//   var from = cfg.from || []
-//   var count = 3
-//   // var decimals = cfg.decimals || 8
-//   var continuity = cfg.continuity
-//   var dfactor = Math.pow(10, 8)
-//   var data = []
-//   var i, value
-
-//   for (i = 0; i < count; ++i) {
-//     value = cassualties
-//     if (value <= continuity) {
-//       data.push(Math.round(dfactor * value) / dfactor)
-//     } else {
-//       data.push(null)
-//     }
-//   }
-
-//   return data
-// }
-
 const labels = [
   "January",
   "February",
@@ -51,13 +17,6 @@ const labels = [
   "November",
   "December",
 ]
-// const dataFirstSkip = numbers(NUMBER_CFG)
-// const dataMiddleSkip = numbers(NUMBER_CFG)
-// const dataLastSkip = numbers(NUMBER_CFG)
-
-// dataFirstSkip[0] = null
-// dataMiddleSkip[Number.parseInt(dataMiddleSkip.length / 2, 10)] = null
-// dataLastSkip[dataLastSkip.length - 1] = null
 
 const data = {
   labels: labels,
@@ -115,12 +74,37 @@ const Home = () => {
   const [fetchFinnished, setFinnished] = useState(false)
   const [totalData, setData] = useState()
   const [statsConfig, setStatsConfig] = useState(config)
+  const [cassualties, setCassualties] = useState()
+  const [confirmed, setConfirmed] = useState()
+  const [recovered, setRecovered] = useState()
 
   const sortData = totalData => {
     let sortedData = totalData.sort((a, b) => {
       return new Date(a[0].data.date) - new Date(b[0].data.date)
     })
-    console.log(sortedData)
+    sortedData.map(monthData => {
+      setCassualties(prev => {
+        if (prev !== undefined) {
+          return [...prev, monthData[0].data.deaths]
+        } else {
+          return [monthData[0].data.deaths]
+        }
+      })
+      setRecovered(prev => {
+        if (prev !== undefined) {
+          return [...prev, monthData[0].data.recovered]
+        } else {
+          return [monthData[0].data.recovered]
+        }
+      })
+      setConfirmed(prev => {
+        if (prev !== undefined) {
+          return [...prev, monthData[0].data.confirmed]
+        } else {
+          return [monthData[0].data.confirmed]
+        }
+      })
+    })
   }
 
   useEffect(() => {
@@ -144,7 +128,7 @@ const Home = () => {
     }
 
     labels.map((label, i) => {
-      if (i < month && i > 0) {
+      if (i < month) {
         let ind = i + 1
         if (ind[0] !== 1) {
           ind = "0" + ind.toString()
