@@ -112,8 +112,16 @@ const config = {
 }
 
 const Home = () => {
+  const [fetchFinnished, setFinnished] = useState(false)
   const [totalData, setData] = useState()
   const [statsConfig, setStatsConfig] = useState(config)
+
+  const sortData = totalData => {
+    let sortedData = totalData.sort((a, b) => {
+      return new Date(a[0].data.date) - new Date(b[0].data.date)
+    })
+    console.log(sortedData)
+  }
 
   useEffect(() => {
     const options = {
@@ -137,13 +145,13 @@ const Home = () => {
 
     labels.map((label, i) => {
       if (i < month && i > 0) {
-        i += 1
-        if (i[0] !== 1) {
-          i = "0" + i.toString()
+        let ind = i + 1
+        if (ind[0] !== 1) {
+          ind = "0" + ind.toString()
         }
 
         fetch(
-          `https://covid-19-statistics.p.rapidapi.com/reports/total?date=${year}-${i}-${day}`,
+          `https://covid-19-statistics.p.rapidapi.com/reports/total?date=${year}-${ind}-${day}`,
           options
         )
           .then(response => response.json())
@@ -154,10 +162,15 @@ const Home = () => {
               if (prev !== undefined) {
                 return [...prev, monthData]
               } else {
-                return monthData
+                return [monthData]
               }
             })
-            console.log(response)
+            if (Number(i + 1) == Number(month)) {
+              setTimeout(() => {
+                setFinnished(true)
+                return
+              }, 1000)
+            }
           })
           .catch(err => console.error(err))
       }
@@ -165,6 +178,12 @@ const Home = () => {
 
     let chart = new Chart(document.getElementById("myChart"), statsConfig)
   }, [])
+
+  useEffect(() => {
+    if (fetchFinnished === true) {
+      sortData(totalData)
+    }
+  }, [fetchFinnished])
 
   return (
     <div id="home-charts">
