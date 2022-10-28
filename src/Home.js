@@ -3,32 +3,39 @@ import Moment from "react-moment"
 import { Chart, registerables } from "chart.js"
 Chart.register(...registerables)
 
-const DATA_COUNT = 7
-const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 100 }
+// const DATA_COUNT = 12
+// const NUMBER_CFG = {
+//   count: DATA_COUNT,
+//   min: 0,
+//   max: 10000000,
+//   continuity: 10000000,
+// }
 
-function numbers(config) {
-  var cfg = config || {}
-  var min = cfg.min || 0
-  var max = cfg.max || 100
-  var from = cfg.from || []
-  var count = cfg.count || 8
-  var decimals = cfg.decimals || 8
-  var continuity = cfg.continuity || 1
-  var dfactor = Math.pow(10, decimals) || 0
-  var data = []
-  var i, value
+// let cassualties = [29387, 879317, 39872]
 
-  for (i = 0; i < count; ++i) {
-    value = (from[i] || 0) + Math.random(min, max)
-    if (Math.random() <= continuity) {
-      data.push(Math.round(dfactor * value) / dfactor)
-    } else {
-      data.push(null)
-    }
-  }
+// function numbers(config) {
+//   var cfg = config
+//   var min = cfg.min || 0
+//   var max = cfg.max || 10000000
+//   var from = cfg.from || []
+//   var count = 3
+//   // var decimals = cfg.decimals || 8
+//   var continuity = cfg.continuity
+//   var dfactor = Math.pow(10, 8)
+//   var data = []
+//   var i, value
 
-  return data
-}
+//   for (i = 0; i < count; ++i) {
+//     value = cassualties
+//     if (value <= continuity) {
+//       data.push(Math.round(dfactor * value) / dfactor)
+//     } else {
+//       data.push(null)
+//     }
+//   }
+
+//   return data
+// }
 
 const labels = [
   "January",
@@ -44,34 +51,37 @@ const labels = [
   "November",
   "December",
 ]
-const dataFirstSkip = numbers(NUMBER_CFG)
-const dataMiddleSkip = numbers(NUMBER_CFG)
-const dataLastSkip = numbers(NUMBER_CFG)
+// const dataFirstSkip = numbers(NUMBER_CFG)
+// const dataMiddleSkip = numbers(NUMBER_CFG)
+// const dataLastSkip = numbers(NUMBER_CFG)
 
-dataFirstSkip[0] = null
-dataMiddleSkip[Number.parseInt(dataMiddleSkip.length / 2, 10)] = null
-dataLastSkip[dataLastSkip.length - 1] = null
+// dataFirstSkip[0] = null
+// dataMiddleSkip[Number.parseInt(dataMiddleSkip.length / 2, 10)] = null
+// dataLastSkip[dataLastSkip.length - 1] = null
 
 const data = {
   labels: labels,
   datasets: [
     {
-      label: "Skip first dataset",
-      data: dataFirstSkip,
-      borderColor: "rgba(120, 98, 235, 0.8);",
-      backgroundColor: "rgba(120, 98, 235, 0.5);",
+      fill: true,
+      label: "Cassualties",
+      data: [65, 59, 90, 81, 56, 55, 40],
+      borderColor: "#8783a2",
+      backgroundColor: "#8783a2",
     },
     {
-      label: "Skip mid dataset",
-      data: dataMiddleSkip,
-      borderColor: "rgba(192, 183, 239, 0.8);",
-      backgroundColor: "rgba(192, 183, 239, 0.5);",
+      fill: true,
+      label: "Cases",
+      data: [65, 529, 930, 81, 563, 55, 40],
+      borderColor: "#3f3c57",
+      backgroundColor: "#3f3c57",
     },
     {
-      label: "Skip last dataset",
-      data: dataLastSkip,
-      borderColor: "rgba(144, 135, 197, 0.8)",
-      backgroundColor: "rgba(144, 135, 197, 0.5)",
+      fill: true,
+      label: "Recovered",
+      data: [65, 45, 920, 381, 556, 55, 40],
+      borderColor: "#b2abeb",
+      backgroundColor: "#b2abeb",
     },
   ],
 }
@@ -80,12 +90,23 @@ const config = {
   type: "radar",
   data: data,
   options: {
+    animations: {
+      tension: {
+        duration: 3000,
+        easing: "linear",
+        from: 1,
+        to: 0,
+        loop: true,
+      },
+    },
     responsive: true,
     plugins: {
       title: {
         display: true,
         text: "Covid-19 global stats",
+        color: "#b2abeb",
       },
+      legend: { labels: { color: "#b2abeb" } },
     },
   },
 }
