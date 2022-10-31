@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import Moment from "react-moment"
 import { Chart, registerables } from "chart.js"
 import "react-slideshow-image/dist/styles.css"
@@ -34,6 +34,7 @@ const Home = () => {
   const [chart1InUse, setChart1InUse] = useState()
   const [chart2InUse, setChart2InUse] = useState()
   const [categoriesLoaded, setCategoriesLoaded] = useState(false)
+  const [selectedDiagram, setSelectedDiagram] = useState(0)
 
   useEffect(() => {
     setStatsConfigCassualties({
@@ -49,7 +50,8 @@ const Home = () => {
             loop: true,
           },
         },
-        responsive: true,
+        scale: 4,
+        responsive: false,
         plugins: {
           title: {
             display: true,
@@ -73,7 +75,7 @@ const Home = () => {
             loop: true,
           },
         },
-        responsive: true,
+        responsive: false,
         plugins: {
           title: {
             display: true,
@@ -97,7 +99,7 @@ const Home = () => {
             loop: true,
           },
         },
-        responsive: true,
+        responsive: false,
         plugins: {
           title: {
             display: true,
@@ -263,6 +265,7 @@ const Home = () => {
           .catch(err => console.error(err))
       }
     })
+    selectDiagram("init")
   }, [])
 
   useEffect(() => {
@@ -271,23 +274,56 @@ const Home = () => {
     }
   }, [fetchFinnished])
 
+  const selectDiagram = arg => {
+    if (arg == "init") {
+      setSelectedDiagram(0)
+    } else if (arg == "next") {
+      if (selectedDiagram == 2) {
+        return
+      }
+      setSelectedDiagram(prev => prev + 1)
+    } else {
+      if (selectedDiagram == 0) {
+        return
+      }
+      setSelectedDiagram(prev => prev - 1)
+    }
+  }
+
   return (
-    <div id="home-charts">
-      <canvas
-        id="myChart0"
-        width={window.innerWidth < 1000 ? "200" : "500"}
-        height="200"
-      ></canvas>
-      <canvas
-        id="myChart1"
-        width={window.innerWidth < 1000 ? "200" : "500"}
-        height="200"
-      ></canvas>
-      <canvas
-        id="myChart2"
-        width={window.innerWidth < 1000 ? "200" : "500"}
-        height="200"
-      ></canvas>
+    <div>
+      <div id="home-charts">
+        <button
+          className="diagram-but prev"
+          onClick={() => selectDiagram("prev")}
+        >
+          Prev
+        </button>
+        <canvas
+          id="myChart0"
+          className={selectedDiagram == 0 ? "selected chart" : "chart"}
+          width={window.innerWidth < 1000 ? "300" : "600"}
+          height="300"
+        ></canvas>
+        <canvas
+          id="myChart1"
+          className={selectedDiagram == 1 ? "selected chart" : "chart"}
+          width={window.innerWidth < 1000 ? "300" : "600"}
+          height="200"
+        ></canvas>
+        <canvas
+          id="myChart2"
+          className={selectedDiagram == 2 ? "selected chart" : "chart"}
+          width={window.innerWidth < 1000 ? "300" : "600"}
+          height="200"
+        ></canvas>
+        <button
+          className="diagram-but next"
+          onClick={() => selectDiagram("next")}
+        >
+          Next
+        </button>
+      </div>
     </div>
   )
 }
