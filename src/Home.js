@@ -1,32 +1,8 @@
 import React, { useEffect, useState } from "react"
 import Moment from "react-moment"
 import { Chart, registerables } from "chart.js"
+import "react-slideshow-image/dist/styles.css"
 Chart.register(...registerables)
-
-// const config = {
-//   type: "radar",
-//   data: data,
-//   options: {
-//     animations: {
-//       tension: {
-//         duration: 3000,
-//         easing: "linear",
-//         from: 1,
-//         to: 0,
-//         loop: true,
-//       },
-//     },
-//     responsive: true,
-//     plugins: {
-//       title: {
-//         display: true,
-//         text: "Covid-19 global stats",
-//         color: "#b2abeb",
-//       },
-//       legend: { labels: { color: "#b2abeb" } },
-//     },
-//   },
-// }
 
 const Home = () => {
   const [fetchFinnished, setFinnished] = useState(false)
@@ -45,18 +21,24 @@ const Home = () => {
     "November",
     "December",
   ])
-  const [statsConfig, setStatsConfig] = useState()
+  const [statsConfigCassualties, setStatsConfigCassualties] = useState()
+  const [statsConfigConfirmed, setStatsConfigConfirmed] = useState()
+  const [statsConfigrecovered, setStatsConfigRecovered] = useState()
   const [cassualties, setCassualties] = useState()
   const [confirmed, setConfirmed] = useState()
   const [recovered, setRecovered] = useState()
-  const [yearData, setYearData] = useState({})
-  const [chartInUse, setChartInUse] = useState()
+  const [casData, setCasData] = useState({})
+  const [confData, setConfData] = useState({})
+  const [recoveredData, setRecoveredData] = useState({})
+  const [chart0InUse, setChart0InUse] = useState()
+  const [chart1InUse, setChart1InUse] = useState()
+  const [chart2InUse, setChart2InUse] = useState()
   const [categoriesLoaded, setCategoriesLoaded] = useState(false)
 
   useEffect(() => {
-    setStatsConfig({
+    setStatsConfigCassualties({
       type: "radar",
-      data: yearData,
+      data: casData,
       options: {
         animations: {
           tension: {
@@ -78,21 +60,88 @@ const Home = () => {
         },
       },
     })
-  }, [yearData])
+    setStatsConfigConfirmed({
+      type: "radar",
+      data: confData,
+      options: {
+        animations: {
+          tension: {
+            duration: 3000,
+            easing: "linear",
+            from: 1,
+            to: 0,
+            loop: true,
+          },
+        },
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Covid-19 global stats",
+            color: "#b2abeb",
+          },
+          legend: { labels: { color: "#b2abeb" } },
+        },
+      },
+    })
+    setStatsConfigRecovered({
+      type: "radar",
+      data: recoveredData,
+      options: {
+        animations: {
+          tension: {
+            duration: 3000,
+            easing: "linear",
+            from: 1,
+            to: 0,
+            loop: true,
+          },
+        },
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Covid-19 global stats",
+            color: "#b2abeb",
+          },
+          legend: { labels: { color: "#b2abeb" } },
+        },
+      },
+    })
+  }, [recoveredData, confData, casData])
 
   useEffect(() => {
-    if (chartInUse) {
-      chartInUse.destroy()
-      let chart = new Chart(document.getElementById("myChart"), statsConfig)
-      setChartInUse(chart)
-    } else {
-      let chart = new Chart(document.getElementById("myChart"), statsConfig)
-      setChartInUse(chart)
+    const allCharts = [chart0InUse, chart1InUse, chart2InUse]
+    if (allCharts.length > 0) {
+      allCharts.map((somechart, i) => {
+        if (somechart !== undefined) {
+          somechart.destroy()
+        }
+      })
     }
-  }, [statsConfig])
+    let indexes = [0, 1, 2]
+
+    indexes.map(i => {
+      let chart = new Chart(
+        document.getElementById(`myChart${i}`),
+        i == 0
+          ? statsConfigCassualties
+          : i == 1
+          ? statsConfigConfirmed
+          : statsConfigrecovered
+      )
+      if (i == 0) {
+        setChart0InUse(chart)
+      } else if (i == 1) {
+        setChart1InUse(chart)
+      } else {
+        setChart2InUse(chart)
+      }
+    })
+  }, [statsConfigCassualties, statsConfigConfirmed, statsConfigrecovered])
 
   useEffect(() => {
-    setYearData({
+    setCasData({
       labels: labels,
       datasets: [
         {
@@ -102,6 +151,11 @@ const Home = () => {
           borderColor: "#8783a2",
           backgroundColor: "#8783a2e4",
         },
+      ],
+    })
+    setConfData({
+      labels: labels,
+      datasets: [
         {
           fill: true,
           label: "Cases",
@@ -109,12 +163,17 @@ const Home = () => {
           borderColor: "#3f3c57",
           backgroundColor: "#3f3c57e4",
         },
+      ],
+    })
+    setRecoveredData({
+      labels: labels,
+      datasets: [
         {
           fill: true,
           label: "Recovered",
           data: recovered,
-          borderColor: "#b2abeb",
-          backgroundColor: "#b2abebe4",
+          borderColor: "#3f3c57",
+          backgroundColor: "#3f3c57e4",
         },
       ],
     })
@@ -215,8 +274,18 @@ const Home = () => {
   return (
     <div id="home-charts">
       <canvas
-        id="myChart"
-        width={window.innerWidth < 1000 ? "400" : "500"}
+        id="myChart0"
+        width={window.innerWidth < 1000 ? "200" : "500"}
+        height="200"
+      ></canvas>
+      <canvas
+        id="myChart1"
+        width={window.innerWidth < 1000 ? "200" : "500"}
+        height="200"
+      ></canvas>
+      <canvas
+        id="myChart2"
+        width={window.innerWidth < 1000 ? "200" : "500"}
         height="200"
       ></canvas>
     </div>
