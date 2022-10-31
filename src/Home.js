@@ -3,80 +3,122 @@ import Moment from "react-moment"
 import { Chart, registerables } from "chart.js"
 Chart.register(...registerables)
 
-const labels = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-]
-
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      fill: true,
-      label: "Cassualties",
-      data: [65, 59, 90, 81, 56, 55, 40, 381, 381, 381, 381, 381],
-      borderColor: "#8783a2",
-      backgroundColor: "#8783a2e4",
-    },
-    {
-      fill: true,
-      label: "Cases",
-      data: [65, 529, 930, 81, 563, 55, 40, 381, 381, 781, 481, 681],
-      borderColor: "#3f3c57",
-      backgroundColor: "#3f3c57e4",
-    },
-    {
-      fill: true,
-      label: "Recovered",
-      data: [65, 45, 920, 381, 556, 55, 40, 381, 381, 381, 381, 381],
-      borderColor: "#b2abeb",
-      backgroundColor: "#b2abebe4",
-    },
-  ],
-}
-
-const config = {
-  type: "radar",
-  data: data,
-  options: {
-    animations: {
-      tension: {
-        duration: 3000,
-        easing: "linear",
-        from: 1,
-        to: 0,
-        loop: true,
-      },
-    },
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: "Covid-19 global stats",
-        color: "#b2abeb",
-      },
-      legend: { labels: { color: "#b2abeb" } },
-    },
-  },
-}
+// const config = {
+//   type: "radar",
+//   data: data,
+//   options: {
+//     animations: {
+//       tension: {
+//         duration: 3000,
+//         easing: "linear",
+//         from: 1,
+//         to: 0,
+//         loop: true,
+//       },
+//     },
+//     responsive: true,
+//     plugins: {
+//       title: {
+//         display: true,
+//         text: "Covid-19 global stats",
+//         color: "#b2abeb",
+//       },
+//       legend: { labels: { color: "#b2abeb" } },
+//     },
+//   },
+// }
 
 const Home = () => {
   const [fetchFinnished, setFinnished] = useState(false)
   const [totalData, setData] = useState()
-  const [statsConfig, setStatsConfig] = useState(config)
+  const [labels, setLabels] = useState([
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ])
+  const [statsConfig, setStatsConfig] = useState()
   const [cassualties, setCassualties] = useState()
   const [confirmed, setConfirmed] = useState()
   const [recovered, setRecovered] = useState()
+  const [yearData, setYearData] = useState({})
+  const [chartInUse, setChartInUse] = useState()
+  const [categoriesLoaded, setCategoriesLoaded] = useState(false)
+
+  useEffect(() => {
+    setStatsConfig({
+      type: "radar",
+      data: yearData,
+      options: {
+        animations: {
+          tension: {
+            duration: 3000,
+            easing: "linear",
+            from: 1,
+            to: 0,
+            loop: true,
+          },
+        },
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Covid-19 global stats",
+            color: "#b2abeb",
+          },
+          legend: { labels: { color: "#b2abeb" } },
+        },
+      },
+    })
+  }, [yearData])
+
+  useEffect(() => {
+    if (chartInUse) {
+      chartInUse.destroy()
+      let chart = new Chart(document.getElementById("myChart"), statsConfig)
+      setChartInUse(chart)
+    } else {
+      let chart = new Chart(document.getElementById("myChart"), statsConfig)
+      setChartInUse(chart)
+    }
+  }, [statsConfig])
+
+  useEffect(() => {
+    setYearData({
+      labels: labels,
+      datasets: [
+        {
+          fill: true,
+          label: "Cassualties",
+          data: cassualties,
+          borderColor: "#8783a2",
+          backgroundColor: "#8783a2e4",
+        },
+        {
+          fill: true,
+          label: "Cases",
+          data: confirmed,
+          borderColor: "#3f3c57",
+          backgroundColor: "#3f3c57e4",
+        },
+        {
+          fill: true,
+          label: "Recovered",
+          data: recovered,
+          borderColor: "#b2abeb",
+          backgroundColor: "#b2abebe4",
+        },
+      ],
+    })
+  }, [categoriesLoaded])
 
   const sortData = totalData => {
     let sortedData = totalData.sort((a, b) => {
@@ -105,6 +147,9 @@ const Home = () => {
         }
       })
     })
+    setTimeout(() => {
+      setCategoriesLoaded(true)
+    }, 2000)
   }
 
   useEffect(() => {
@@ -123,7 +168,7 @@ const Home = () => {
     if (month[0] !== 1) {
       month = "0" + month.toString()
     }
-    if (day[0] !== 1 && day[0] !== 2 && day !== 2 && day !== 1) {
+    if (day[0] !== 1 && day[0] !== 2) {
       day = "0" + day.toString()
     }
 
@@ -159,8 +204,6 @@ const Home = () => {
           .catch(err => console.error(err))
       }
     })
-
-    let chart = new Chart(document.getElementById("myChart"), statsConfig)
   }, [])
 
   useEffect(() => {
