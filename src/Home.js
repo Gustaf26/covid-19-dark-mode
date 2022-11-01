@@ -5,6 +5,14 @@ import "react-slideshow-image/dist/styles.css"
 Chart.register(...registerables)
 Chart.register(defaults.color)
 Chart.defaults.color = "#bfb7ee"
+Chart.defaults.font = {
+  family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+  size: 15,
+  style: "normal",
+  lineHeight: 1,
+  weight: null,
+  color: "#373444",
+}
 
 const Home = () => {
   const [fetchFinnished, setFinnished] = useState(false)
