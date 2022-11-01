@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from "react"
 import Moment from "react-moment"
-import { Chart, registerables } from "chart.js"
+import { Chart, registerables, plugins, defaults } from "chart.js"
 import "react-slideshow-image/dist/styles.css"
 Chart.register(...registerables)
+Chart.register(defaults.color)
+Chart.defaults.color = "#bfb7ee"
 
 const Home = () => {
   const [fetchFinnished, setFinnished] = useState(false)
@@ -50,7 +52,7 @@ const Home = () => {
             loop: true,
           },
         },
-        scale: 4,
+        maintainAspectRatio: false,
         responsive: false,
         plugins: {
           title: {
@@ -59,6 +61,7 @@ const Home = () => {
             color: "#b2abeb",
           },
           legend: { labels: { color: "#b2abeb" } },
+          color: "#bfb7ee",
         },
       },
     })
@@ -75,6 +78,7 @@ const Home = () => {
             loop: true,
           },
         },
+        maintainAspectRatio: false,
         responsive: false,
         plugins: {
           title: {
@@ -99,6 +103,7 @@ const Home = () => {
             loop: true,
           },
         },
+        maintainAspectRatio: false,
         responsive: false,
         plugins: {
           title: {
@@ -226,7 +231,8 @@ const Home = () => {
     let year = today.getFullYear()
     let month = today.getMonth()
     let day = today.getDay()
-    if (month[0] !== 1) {
+
+    if (month < 10) {
       month = "0" + month.toString()
     }
     if (day[0] !== 1 && day[0] !== 2) {
@@ -236,7 +242,7 @@ const Home = () => {
     labels.map((label, i) => {
       if (i < month) {
         let ind = i + 1
-        if (ind[0] !== 1) {
+        if (ind < 10) {
           ind = "0" + ind.toString()
         }
 
@@ -302,20 +308,20 @@ const Home = () => {
         <canvas
           id="myChart0"
           className={selectedDiagram == 0 ? "selected chart" : "chart"}
-          width={window.innerWidth < 1000 ? "300" : "600"}
-          height="300"
+          width={window.innerWidth < 1000 ? "500" : "900"}
+          height="500"
         ></canvas>
         <canvas
           id="myChart1"
           className={selectedDiagram == 1 ? "selected chart" : "chart"}
-          width={window.innerWidth < 1000 ? "300" : "600"}
-          height="200"
+          width={window.innerWidth < 1000 ? "500" : "900"}
+          height="500"
         ></canvas>
         <canvas
           id="myChart2"
           className={selectedDiagram == 2 ? "selected chart" : "chart"}
-          width={window.innerWidth < 1000 ? "300" : "600"}
-          height="200"
+          width={window.innerWidth < 1000 ? "600" : "900"}
+          height="500"
         ></canvas>
         <button
           className="diagram-but next"

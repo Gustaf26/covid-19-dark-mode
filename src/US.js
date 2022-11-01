@@ -102,7 +102,10 @@ class ContagionList extends React.Component {
           <td>
             {" "}
             {cas.timestamp !== undefined ? (
-              <Moment parse="YYYY-MM-DD"> {cas.timestamp.slice(0, 10)}</Moment>
+              <Moment utc={true} parse="DD-MM">
+                {" "}
+                {cas.timestamp.slice(0, 10)}
+              </Moment>
             ) : (
               <span>No recent update</span>
             )}

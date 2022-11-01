@@ -131,7 +131,7 @@ p {
 
 .diagram-but:hover {
   color: black;
-  background-color: rgb(191, 183, 238);
+  background-color: #bfb7ee;
 }
 .diagram-but.prev {
   position: absolute;
@@ -688,6 +688,12 @@ footer {
     width: 100%;
   }
 
+  /* Home diagrams */
+
+  #home-charts {
+    width: 96vw;
+  }
+
   /*Country search*/
 
   .country_search {
@@ -809,6 +815,11 @@ footer {
     border: 1px dotted rgb(51, 47, 75);
     color: white;
     margin: 0 auto;
+  }
+
+  /* Home diagrams */
+  #home-charts {
+    width: 95vw;
   }
 
   /*COUNTRY SEARCH*/
