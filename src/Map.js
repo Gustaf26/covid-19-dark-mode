@@ -50,7 +50,7 @@ function Map() {
     popup.classList.remove("animated")
 
     if (selectionIndex.current >= 0) {
-      popup.style.color = "white"
+      popup.style.color = "rgb(191, 183, 238)"
     }
     if (!cont) {
       popup.toggleAttribute("hidden")

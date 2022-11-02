@@ -52,6 +52,10 @@ body {
   background-color: #050505e0;
 }
 
+#initiallist li a#logo:hover {
+  filter: brightness(1.8);
+}
+
 .routcont2 {
   display: flex;
   flex-direction: row;
@@ -164,18 +168,20 @@ p {
   width: 250vw;
   top: 35%;
   left: 100vw;
-  animation: moveleft 20s linear infinite;
+  animation: moveleft 25s linear infinite;
 }
 
 #countdown-outbreak span.not_animated {
   position: absolute;
   top: 35%;
-  left: 37%;
-  right: 35%;
+  left: 32%;
+  right: 33%;
+  margin: 0 auto;
+  font-size: larger;
   text-align: center;
   animation-play-state: paused;
-  width: 20vw;
-  color: black;
+  width: 30vw;
+  color: #f097d1;
   z-index: 1000;
   animation: 1s vanish infinite;
 }
@@ -692,7 +698,7 @@ footer {
   /* Home diagrams */
 
   #home-charts {
-    width: 96vw !important;
+    width: 98vw !important;
   }
 
   .diagram-but.prev {
