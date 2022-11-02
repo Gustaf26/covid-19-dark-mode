@@ -68,8 +68,9 @@ const Home = () => {
             text: "Covid-19 global stats",
             color: "#b2abeb",
           },
-          legend: { labels: { color: "#b2abeb" } },
-          color: "#bfb7ee",
+          legend: {
+            labels: { color: "#b2abeb" },
+          },
         },
       },
     })
@@ -163,8 +164,8 @@ const Home = () => {
           fill: true,
           label: "Cassualties",
           data: cassualties,
-          borderColor: "#8783a2",
-          backgroundColor: "#8783a2e4",
+          borderColor: "#3f3c57",
+          backgroundColor: "#3f3c57e4",
         },
       ],
     })

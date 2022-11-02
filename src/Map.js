@@ -50,11 +50,7 @@ function Map() {
     popup.classList.remove("animated")
 
     if (selectionIndex.current >= 0) {
-      popup.style.visibility = "visible"
-      popup.style.position = "absolute"
-      popup.classList.add("animated")
-      popup.style.top = (window.innerHeight / 2).toString() + "px"
-      popup.style.left = "35%"
+      popup.style.color = "white"
     }
     if (!cont) {
       popup.toggleAttribute("hidden")
@@ -112,11 +108,9 @@ function Map() {
           selected={selected}
           onSelect={cont => getMyToolTipFunction(cont)}
         />
-        <span className="displayText w-100" id="displayText">
-          <p> New cases: {newCases}</p>
-          <p> Total cases: {total}</p>
-          <p> Total deaths: {rips}</p>
-        </span>
+        <p id="displayText">
+          <span> No data available at the moment</span>
+        </p>
       </div>
     </>
   )
