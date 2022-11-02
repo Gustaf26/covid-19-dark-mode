@@ -11,7 +11,7 @@ Chart.defaults.font = {
   style: "normal",
   lineHeight: 1,
   weight: null,
-  color: "#373444",
+  color: "#3e0f75",
 }
 
 const Home = () => {

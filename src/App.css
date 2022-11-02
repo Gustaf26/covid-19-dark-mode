@@ -101,14 +101,14 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 57vw;
+  width: 80%;
   height: 60vh;
   padding: 0 3rem;
   margin: -5% auto;
   background-color: rgba(92, 84, 135, 0.8);
   color: rgb(240, 236, 236);
   border-radius: 5px;
-  z-index: 5;
+  z-index: 1;
 }
 
 .chart {
@@ -597,7 +597,7 @@ svg.map-img:hover {
   width: 40%;
   font-size: small;
   margin: 0 auto;
-  background-color: rgba(62, 15, 117, 0.9);
+  background-color: #3e0f75e6;
   color: rgb(123, 44, 136);
   text-align: center;
   border-radius: 6px;
@@ -692,7 +692,16 @@ footer {
   /* Home diagrams */
 
   #home-charts {
-    width: 96vw;
+    width: 96vw !important;
+  }
+
+  .diagram-but.prev {
+    position: absolute;
+    left: 18%;
+  }
+  .diagram-but.next {
+    position: absolute;
+    right: 18%;
   }
 
   /*Country search*/
@@ -820,7 +829,7 @@ footer {
 
   /* Home diagrams */
   #home-charts {
-    width: 95vw;
+    width: 95vw !important;
   }
 
   /*COUNTRY SEARCH*/

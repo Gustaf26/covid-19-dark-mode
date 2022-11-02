@@ -87,19 +87,16 @@ function Map() {
     }
   }
 
-  useEffect(() => {
-    if (toolTip) {
-      document.getElementById("heading-reg-data").style.visibility = "hidden"
-    } else {
-      document.getElementById("heading-reg-data").style.visibility = "visible"
-    }
-  }, [toolTip])
+  // useEffect(() => {
+  //   if (toolTip) {
+  //     document.getElementById("heading-reg-data").style.visibility = "hidden"
+  //   } else {
+  //     document.getElementById("heading-reg-data").style.visibility = "visible"
+  //   }
+  // }, [toolTip])
 
   return (
     <>
-      <h5 id="heading-reg-data" className="pb-2 my-3">
-        See stats (click) on each continent
-      </h5>
       <div
         className="class"
         onClick={!animating ? e => setTooltipCoords(e) : null}
