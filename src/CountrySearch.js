@@ -155,17 +155,22 @@ const CountrySearch = () => {
   useEffect(() => {
     setCountryData(
       data.map((cas, index) => (
-        <TableBody key={index}>
-          <StyledTableRow key={index}>
-            <StyledTableCell align="center">{cas.province}</StyledTableCell>
-            <StyledTableCell align="center">{cas.confirmed}</StyledTableCell>
-            <StyledTableCell align="center">{cas.deaths}</StyledTableCell>
-            {/* <StyledTableCell align="center">{cas.recovered}</StyledTableCell> */}
-            <StyledTableCell align="center">
-              <Moment durationFromNow>{cas.timestamp}</Moment> from now
-            </StyledTableCell>
-          </StyledTableRow>
-        </TableBody>
+        <tr key={index}>
+          {" "}
+          <td> {cas.province} </td> <td> {cas.confirmed} </td>{" "}
+          <td> {cas.deaths} </td>{" "}
+          <td>
+            {" "}
+            {cas.timestamp !== undefined ? (
+              <Moment utc={true} parse="DD-MM">
+                {" "}
+                {cas.timestamp.slice(0, 10)}
+              </Moment>
+            ) : (
+              <span>No recent update</span>
+            )}
+          </td>{" "}
+        </tr>
       ))
     )
   }, [data])
@@ -189,22 +194,17 @@ const CountrySearch = () => {
       ) : showsearch === false && errormsg === false ? (
         <div className="countryinfo">
           <h6 className="country_title">{country.toUpperCase()}</h6>
-          <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell align="center">PROVINCE</StyledTableCell>
-                  <StyledTableCell align="center">CONFIRMED</StyledTableCell>
-                  <StyledTableCell align="center">CASUALTIES</StyledTableCell>
-                  {/* <StyledTableCell align="center">RECOVERED</StyledTableCell> */}
-                  <StyledTableCell align="center">
-                    UPDATED (hh:mm:ss)
-                  </StyledTableCell>
-                </TableRow>
-              </TableHead>
-              {countryData}
-            </Table>
-          </TableContainer>
+          <table>
+            <thead>
+              <tr>
+                {" "}
+                <th> PROVINCE </th>
+                <th> CONFIRMED </th> <th> CASUALTIES </th>
+                <th> UPDATE(hh: mm: ss) </th>{" "}
+              </tr>{" "}
+            </thead>{" "}
+            <tbody> {countryData} </tbody>{" "}
+          </table>{" "}
           <button className="backToTop" onClick={newSearch}>
             New Search
           </button>

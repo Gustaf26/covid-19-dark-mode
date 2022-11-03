@@ -704,6 +704,10 @@ footer {
     width: 100%;
   }
 
+  ul#initiallist li a#logo {
+    margin-left: 5%;
+  }
+
   /* Home diagrams */
 
   #home-charts {
@@ -881,8 +885,8 @@ footer {
 
   th,
   td {
-    font-size: 0.9em;
-    padding: 0.3em;
+    font-size: 0.7em;
+    padding: 0.2em;
   }
   th {
     padding-top: 0.3rem;
@@ -943,8 +947,8 @@ footer {
 
   th,
   td {
-    font-size: 0.9em;
-    padding: 0.2em;
+    font-size: 0.8em;
+    padding: 0.4em;
   }
 
   th {
