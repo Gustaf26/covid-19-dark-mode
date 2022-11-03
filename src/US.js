@@ -102,7 +102,7 @@ class ContagionList extends React.Component {
           <td>
             {" "}
             {cas.timestamp !== undefined ? (
-              <Moment utc={true} parse="DD-MM">
+              <Moment utc={true} parse="YYYY-DD-MM" format={"MMMM Do YYYY"}>
                 {" "}
                 {cas.timestamp.slice(0, 10)}
               </Moment>
@@ -121,7 +121,7 @@ class ContagionList extends React.Component {
             <tr>
               {" "}
               {/* <th>CITY</th> */} <th> PROVINCE </th> <th> CONFIRMED </th>{" "}
-              <th> CASUALTIES </th> <th> UPDATE(hh: mm: ss) </th>{" "}
+              <th> CASUALTIES </th> <th> UPDATE (mm:dd:yy) </th>{" "}
             </tr>{" "}
           </thead>{" "}
           <tbody> {list} </tbody>{" "}

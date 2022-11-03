@@ -37,7 +37,7 @@ const Navbar = props => {
       startTrans(() => {
         setOutbreakMsgs(outbreakMsg)
       })
-    }, 3000)
+    }, 5000)
   }
 
   useEffect(() => {

@@ -173,14 +173,14 @@ p {
 
 #countdown-outbreak span.not_animated {
   position: absolute;
-  top: 35%;
-  left: 32%;
+  top: 30%;
+  left: 33.5%;
   right: 33%;
   margin: 0 auto;
   font-size: larger;
   text-align: center;
   animation-play-state: paused;
-  width: 30vw;
+  width: 33vw;
   color: #f097d1;
   z-index: 1000;
   animation: 1s vanish infinite;

@@ -81,7 +81,7 @@ const ContagionList = () => {
               <th>CONFIRMED</th>
               {/* <th>RECOVERED</th> */}
               <th>CASUALTIES</th>
-              <th>UPDATE (hh:mm:ss)</th>
+              <th>UPDATE (mm:dd:yy)</th>
             </tr>
           </thead>
           <tbody>
@@ -95,7 +95,9 @@ const ContagionList = () => {
                     {/* <td>{cas.recovered}</td> */}
                     <td>{cas.deaths}</td>
                     <td>
-                      <Moment durationFromNow>{cas.timestamp}</Moment> from now
+                      <Moment parse="YYYY-DD-MM" format={"MMMM Do YYYY"}>
+                        {cas.timestamp}
+                      </Moment>{" "}
                     </td>
                   </tr>
                 )
