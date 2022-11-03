@@ -258,7 +258,7 @@ span.advice-highlights {
 
 .openbtn {
   position: absolute;
-  top: 50%;
+  top: 52%;
   border-radius: 5px;
   border: 1px dotted grey;
   font-size: 1.25em;
@@ -340,11 +340,19 @@ button {
   background: rgba(92, 84, 135, 0.8);
   border-radius: 5px;
   padding: 1rem;
-}
-
-.country_search {
   min-width: 40vw;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.forma {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0.6rem;
 }
 
 #countryinput {
@@ -684,7 +692,8 @@ footer {
     color: black;
     justify-content: space-evenly;
     margin-top: 0;
-    margin-left: 40%;
+    width: 100vw;
+    /* margin-left: 40%; */
     z-index: 11000;
     height: 40vh;
     background-color: rgba(0, 0, 0, 1);
@@ -726,9 +735,18 @@ footer {
   }
 
   #countrysearchbtn {
-    padding: 0.5rem;
-    max-width: 20%;
-    margin-top: 0.5rem;
+    margin: 0.6em auto 0.3em auto;
+    padding: 0.3em;
+    max-width: 50%;
+    border-radius: 5px;
+    border: 1px dotted grey;
+  }
+
+  #countryinput {
+    border-radius: 10px;
+    margin: 0.6em auto;
+    padding: 0.1em;
+    width: 80%;
   }
 
   /*Conuntry table*/
@@ -818,7 +836,7 @@ footer {
     color: black;
     justify-content: space-evenly;
     margin-top: 0;
-    margin-left: 40%;
+    width: 100vw;
     z-index: 11000;
     height: 40vh;
     background-color: rgba(0, 0, 0, 1);
@@ -845,7 +863,7 @@ footer {
   }
 
   #countrysearchbtn {
-    margin: 0em auto 0.3em auto;
+    margin: 0.6em auto 0.3em auto;
     padding: 0.3em;
     max-width: 50%;
     border-radius: 5px;
@@ -968,20 +986,29 @@ footer {
 @media screen and (min-width: 601px) and (max-width: 1100px) {
   #initiallist {
     display: flex;
-    /* width: 100%; */
-    flex-direction: row;
+    position: absolute;
+    top: 55%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     list-style-type: none;
     font-weight: bold;
-    justify-content: center;
-    z-index: 1000;
-    height: 55%;
+    color: black;
+    justify-content: space-evenly;
+    margin-top: 0;
+    margin-left: 40%;
+    z-index: 11000;
+    height: 40vh;
+    background-color: rgba(0, 0, 0, 1);
   }
-  #initiallist li {
-    width: 40%;
-    font-size: 90%;
+
+  ul#initiallist li {
     padding: 0;
+    width: 100%;
+    border: 1px dotted rgb(51, 47, 75);
+    color: white;
+    margin: 0 auto;
   }
   th,
   td {
@@ -1044,6 +1071,7 @@ footer {
   ul#initiallist li {
     padding: 1rem;
     height: 25%;
+    line-height: 2.5;
   }
 
   #countdown-outbreak span {
@@ -1056,9 +1084,8 @@ footer {
   }
 
   #countdown-outbreak span.not_animated {
-    position: absolute;
-    text-align: left;
     width: 50vw;
+    left: 25vw;
   }
 }
 
