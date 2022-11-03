@@ -25,7 +25,7 @@ const Navbar = props => {
   }
 
   const getHamburger = () => {
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth < 1100) {
       setMenu(!showmenu)
     }
   }

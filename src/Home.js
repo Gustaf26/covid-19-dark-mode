@@ -114,12 +114,6 @@ const Home = () => {
         },
         maintainAspectRatio: false,
         responsive: false,
-        scales: {
-          ticks: {
-            min: -0.4,
-            max: 10,
-          },
-        },
         plugins: {
           title: {
             display: true,
