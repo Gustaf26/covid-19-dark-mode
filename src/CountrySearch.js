@@ -1,71 +1,16 @@
-// import axios from "axios";
 import React, { useState, useEffect } from "react"
-import { withStyles, makeStyles } from "@mui/styles"
-import Table from "@mui/material/Table"
-import TableBody from "@mui/material/TableBody"
-import TableCell from "@mui/material/TableCell"
-import TableContainer from "@mui/material/TableContainer"
-import TableHead from "@mui/material/TableHead"
-import TableRow from "@mui/material/TableRow"
-import Paper from "@mui/material/Paper"
-
 import Moment from "react-moment"
 import "./App.css"
-
-// import Travelrec from "./Travelrec";
-
-const StyledTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    padding: window.innerWidth > 700 ? "0.5em" : "0.2em",
-    fontSize: window.innerWidth > 600 ? 14 : 12,
-  },
-  body: {
-    fontSize: window.innerWidth > 600 ? 14 : 12,
-    padding: window.innerWidth > 700 ? "0.5em" : "0.2em",
-  },
-}))(TableCell)
-
-const StyledTableRow = withStyles(theme => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow)
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 300,
-  },
-})
 
 const CountrySearch = () => {
   const [data, setData] = useState([])
   const [country, setCountry] = useState("")
   const [showsearch, setSearch] = useState("")
   const [errormsg, setError] = useState(false)
-  // const [rawData, setRawData] = useState([]);
-  // const [showRecs, setRecs] = useState(false);
-  // const [travelData, setTravelData] = useState([]);
-  const [setClasses, classes] = useState(useStyles())
   const [countryData, setCountryData] = useState("")
 
   useEffect(() => {
     setSearch(true)
-
-    //   axios
-    //     .get("https://www.trackcorona.live/api/travel", {
-    //       method: "GET",
-    //       headers: {
-    //         "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-    //         "x-rapidapi-key": `${Key.Key}`,
-    //         "Access-Control-Allow-Origin": "*",
-    //       },
-    //     })
-    //     .then((res) => setData(res.data.data))
-    //     .catch((err) => console.log(err));
   }, [])
 
   const getFromApi = e => {
