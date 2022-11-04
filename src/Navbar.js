@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { NavLink } from "react-router-dom"
+import MenuContext from "./hooks/MenuContext"
 
 import Breadcrumbs from "./Breadcrumbs"
 // import Moment from "react-moment"
@@ -8,7 +9,7 @@ let outbreakMsg =
   "The outbreak was first reported to World Health Organisation on Dec 31st 2019. The origin of the virus seems to be traceable to a market in China. The number of victims corresponds to the same as other pandemics in history. Some countries are still running considerable restrictions. Check your countries authorities for guidance"
 
 const Navbar = props => {
-  const [showmenu, setMenu] = useState(true)
+  const menuOptions = useContext(MenuContext)
   const [isPending, startTrans] = useState()
   const [bread, setBread] = useState([])
   const [outbreak, setOutbreakMsgs] = useState()
@@ -18,15 +19,9 @@ const Navbar = props => {
     props.reopenadvice()
   }
 
-  const openmenu = e => {
-    e.preventDefault()
-    setMenu(true)
-    setBread([])
-  }
-
   const getHamburger = () => {
     if (window.innerWidth < 1100) {
-      setMenu(!showmenu)
+      menuOptions.toggleMenu(false)
     }
   }
 
@@ -47,22 +42,13 @@ const Navbar = props => {
 
   return (
     <div className="routcont2">
-      <p
-        id="countdown-outbreak"
-        // onMouseOver={() => setOutbreakHovered(true)}
-        // onMouseOut={() => setOutbreakHovered(false)}
-      >
+      <p id="countdown-outbreak">
         <span className={!outbreak ? "not_animated" : ""}>
           {!outbreak ? "PANDEMIC STILL GOING ON!" : outbreak}
         </span>
       </p>
-      {/* {showmenu === false ? (
-        <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
-          ☰
-        </button>
-      ) : null} */}
 
-      {showmenu === true ? (
+      {menuOptions.menuShowing === true ? (
         <ul id="initiallist">
           <li>
             <NavLink
@@ -122,7 +108,11 @@ const Navbar = props => {
           </li>
         </ul>
       ) : (
-        <button type="submit" className="openbtn" onClick={e => openmenu(e)}>
+        <button
+          type="submit"
+          className="openbtn"
+          onClick={() => menuOptions.toggleMenu(true)}
+        >
           ☰
         </button>
       )}

@@ -7,20 +7,12 @@ import ContagionList from "./ContagionList"
 import Map from "./Map"
 import US from "./US"
 import "./App.css"
-
-import { ThemeProvider, createTheme } from "@mui/material/styles"
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#ffffff",
-    },
-  },
-})
+import MenuContext from "./hooks/MenuContext"
 
 function App() {
   const [text, setAdtext] = useState("")
   const [warning, setWarning] = useState(true)
+  const [showmenu, setMenu] = useState(false)
 
   const closeWarning = () => {
     setWarning(false)
@@ -38,13 +30,21 @@ function App() {
   })
 
   return (
-    <ThemeProvider theme={theme}>
+    <MenuContext.Provider
+      value={{
+        menuShowing: showmenu,
+        toggleMenu: val => setMenu(val),
+      }}
+    >
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
             <Navbar closeWarn={closeWarning} openWarn={openwarning} />
           </header>
-          <div className="container">
+          <div
+            className="container"
+            onClick={() => (showmenu === true ? setMenu(false) : null)}
+          >
             <div className="dummy-container"></div>
             <div className="routcont">
               <Routes>
@@ -58,7 +58,7 @@ function App() {
           </div>
         </div>
       </BrowserRouter>
-    </ThemeProvider>
+    </MenuContext.Provider>
   )
 }
 
