@@ -312,7 +312,7 @@ const Home = () => {
           className="diagram-but prev"
           onClick={() => selectDiagram("prev")}
         >
-          Prev
+          {window.innerWidth < 600 ? "<" : "Prev"}
         </button>
         <canvas
           id="myChart0"
@@ -336,7 +336,7 @@ const Home = () => {
           className="diagram-but next"
           onClick={() => selectDiagram("next")}
         >
-          Next
+          {window.innerWidth < 600 ? ">" : "Next"}
         </button>
       </div>
     </div>

@@ -260,11 +260,18 @@ span.advice-highlights {
   position: absolute;
   top: 52%;
   border-radius: 5px;
-  border: 1px dotted grey;
-  font-size: 1.25em;
-  background-color: #ffffff;
-  color: rgb(88, 87, 87);
+  border: 1px dotted rgba(92, 84, 135, 0.8);
+  font-size: 1.35em;
+  font-weight: bolder;
+  background-color: rgb(191, 183, 238);
+  color: rgba(92, 84, 135, 0.8);
   padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+}
+
+.openbtn:hover {
+  background-color: rgba(92, 84, 135, 0.8);
+  color: rgb(191, 183, 238);
+  border: 1px solid rgb(191, 183, 238);
 }
 
 /*NAVBAR*/
@@ -345,6 +352,11 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-top: -3rem;
+}
+
+.country_search h6 {
+  color: #bfb7ee;
 }
 
 .forma {
@@ -377,7 +389,7 @@ button {
 #commentbelow {
   font-weight: bold;
   padding-top: 1rem;
-  color: rgb(97, 92, 92);
+  color: #c46ea6;
 }
 
 #star {
@@ -670,6 +682,17 @@ footer {
     font-size: small;
   }
 
+  /* Outbreak msg */
+
+  #countdown-outbreak span {
+    width: 600vw !important;
+  }
+
+  #countdown-outbreak span.not_animated {
+    width: 100vw !important;
+    margin-left: -27vw;
+  }
+
   /*Menu*/
 
   .App-header {
@@ -682,8 +705,8 @@ footer {
   ul#initiallist {
     display: flex;
     position: absolute;
-    top: 55%;
     display: flex;
+    top: 51%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -716,17 +739,30 @@ footer {
 
   .diagram-but.prev {
     position: absolute;
-    left: 18%;
+    left: 2%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: xx-large;
+    color: #dcb6f1;
   }
   .diagram-but.next {
     position: absolute;
-    right: 18%;
+    right: 2%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: xx-large;
+    color: #dcb6f1;
+  }
+  .diagram-but:hover {
+    color: #875475;
+    background-color: #dcb6f1;
   }
 
   /*Country search*/
 
   .country_search {
     min-height: 120px;
+    margin-top: -3rem;
   }
 
   .forma {
@@ -735,7 +771,8 @@ footer {
     align-items: center;
   }
   .country_search h6 {
-    color: grey;
+    color: #bfb7ee;
+    font-size: 0.85em;
   }
 
   #countrysearchbtn {
@@ -825,12 +862,21 @@ footer {
     margin: 1rem;
   }
 
+  /* OUTBREAK MSG */
+  #countdown-outbreak span {
+    width: 500vw !important;
+  }
+  #countdown-outbreak span.not_animated {
+    width: 50vw !important;
+    left: 25vw;
+  }
+
   /*NAVLIST*/
 
   #initiallist {
     display: flex;
     position: absolute;
-    top: 55%;
+    top: 51%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -858,6 +904,27 @@ footer {
   /* Home diagrams */
   #home-charts {
     width: 95vw !important;
+  }
+
+  .diagram-but.prev {
+    position: absolute;
+    left: 2%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: xx-large;
+    color: #dcb6f1;
+  }
+  .diagram-but.next {
+    position: absolute;
+    right: 2%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: xx-large;
+    color: #dcb6f1;
+  }
+  .diagram-but:hover {
+    color: #875475;
+    background-color: #dcb6f1;
   }
 
   /*COUNTRY SEARCH*/

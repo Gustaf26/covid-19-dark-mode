@@ -112,9 +112,9 @@ const ContagionList = () => {
             Next
           </button>
         </div>
-        <p id="commentbelow">
+        {/* <p id="commentbelow">
           (*) List of countries excepting the US and China
-        </p>
+        </p> */}
       </div>
     </div>
   )

@@ -130,6 +130,7 @@ const CountrySearch = () => {
               id="countryinput"
               type="text"
               onChange={e => changeCountry(e)}
+              placeholder="Enter name"
             />
             <button id="countrysearchbtn" type="submit">
               Search
