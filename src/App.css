@@ -310,6 +310,17 @@ ul#initiallist li a {
   height: 100%;
 }
 
+@keyframes moveMenuDown {
+  0% {
+    opacity: 0;
+    top: 0%;
+  }
+  100% {
+    opacity: 1;
+    top: 51%;
+  }
+}
+
 .usefulLinks {
   max-height: 285px;
   position: relative;
@@ -706,7 +717,7 @@ footer {
     display: flex;
     position: absolute;
     display: flex;
-    top: 51%;
+    /* top: 51%; */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1042,23 +1053,12 @@ footer {
     max-width: 500px;
     margin-top: -2em;
   }
-
-  /* .displayText {
-    max-height: 43%;
-    margin-top: -70px;
-  }
-
-  .displayText a {
-    font-size: small;
-    margin: 0.25em;
-  } */
 }
 
 @media screen and (min-width: 601px) and (max-width: 1100px) {
   #initiallist {
     display: flex;
     position: absolute;
-    top: 51%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1137,6 +1137,7 @@ footer {
     list-style-type: none;
     font-weight: bold;
     justify-content: center;
+    animation: 3s moveMenuDown forwards;
   }
 
   ul#initiallist li {
