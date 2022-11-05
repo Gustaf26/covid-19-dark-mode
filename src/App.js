@@ -12,7 +12,7 @@ import MenuContext from "./hooks/MenuContext"
 function App() {
   const [text, setAdtext] = useState("")
   const [warning, setWarning] = useState(true)
-  const [showmenu, setMenu] = useState(false)
+  const [showmenu, setMenu] = useState(true)
 
   const closeWarning = () => {
     setWarning(false)
@@ -43,7 +43,11 @@ function App() {
           </header>
           <div
             className="container"
-            onClick={() => (showmenu === true ? setMenu(false) : null)}
+            onClick={
+              window.innerWidth < 1100
+                ? () => (showmenu === true ? setMenu(false) : null)
+                : null
+            }
           >
             <div className="dummy-container"></div>
             <div className="routcont">
