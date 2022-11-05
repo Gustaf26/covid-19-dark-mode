@@ -5,7 +5,6 @@ const ContagionList = () => {
   const [data, setData] = useState([])
   const [selected, setSelected] = useState([])
   const [index, setIndex] = useState(0)
-  const [clicked, setClicked] = useState(false)
 
   const processData = dat => {
     let globalarr = []
@@ -55,13 +54,13 @@ const ContagionList = () => {
   }, [])
 
   const selectEntries = arg => {
-    if (arg == "next") {
+    if (arg === "next") {
       if (selected.data.length < data.data.length && index < data.data.length) {
         setSelected({ data: data.data.slice(index, index + 10) })
         setIndex(index + 10)
       }
     } else {
-      if (index == 10) {
+      if (index === 10) {
         return
       }
       setSelected({ data: data.data.slice(index - 20, index - 10) })
@@ -112,9 +111,6 @@ const ContagionList = () => {
             Next
           </button>
         </div>
-        {/* <p id="commentbelow">
-          (*) List of countries excepting the US and China
-        </p> */}
       </div>
     </div>
   )

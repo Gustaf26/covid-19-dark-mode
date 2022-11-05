@@ -383,6 +383,12 @@ button {
   margin: 0 auto;
 }
 
+#search-buttons-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 #countrysearchbtn {
   background-color: #ffffff;
   font-size: 1em;
@@ -1137,7 +1143,7 @@ footer {
     list-style-type: none;
     font-weight: bold;
     justify-content: center;
-    animation: 3s moveMenuDown forwards;
+    animation: 2s moveMenuDown forwards;
   }
 
   ul#initiallist li {

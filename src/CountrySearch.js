@@ -8,6 +8,7 @@ const CountrySearch = () => {
   const [showsearch, setSearch] = useState("")
   const [errormsg, setError] = useState(false)
   const [countryData, setCountryData] = useState("")
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
   useEffect(() => {
     setSearch(true)
@@ -74,51 +75,61 @@ const CountrySearch = () => {
         }
       })
 
-      // let travelInfoArr;
-      // travelInfoArr = [];
-
-      // rawData.map((country) => {
-      //   if (country.location === dat.data.covid19Stats[0].country) {
-      //     travelInfoArr.push(country.data);
-      //   }
-      //   setTravelData(travelInfoArr);
-      // });
-
       setData(dataarr)
     }
   }
 
   const newSearch = () => {
     setCountry("")
+    setCountryData([])
+    setData([])
     setSearch(true)
     setError(false)
+    setSelectedIndex(10)
   }
-  // const showRecommendations = () => {
-  //   setRecs(!showRecs);
-  // };
+
+  const selectEntries = action => {
+    if (action === "next") {
+      if (selectedIndex >= data.length) {
+        return
+      }
+      setSelectedIndex(selectedIndex + 10)
+    } else {
+      if (selectedIndex === 10) {
+        return
+      }
+      setSelectedIndex(selectedIndex - 10)
+    }
+  }
 
   useEffect(() => {
+    setCountryData([])
     setCountryData(
-      data.map((cas, index) => (
-        <tr key={index}>
-          {" "}
-          <td> {cas.province} </td> <td> {cas.confirmed} </td>{" "}
-          <td> {cas.deaths} </td>{" "}
-          <td>
-            {" "}
-            {cas.timestamp !== undefined ? (
-              <Moment utc={false} parse="YYYY-DD-MM" format={"MMMM Do YYYY"}>
-                {" "}
-                {cas.timestamp.slice(0, 10)}
-              </Moment>
-            ) : (
-              <span>No recent update</span>
-            )}
-          </td>{" "}
-        </tr>
-      ))
+      data.map((cas, index) => {
+        if (index <= selectedIndex && index >= selectedIndex - 10) {
+          return (
+            <tr key={index}>
+              <td> {cas.province} </td> <td> {cas.confirmed} </td>
+              <td> {cas.deaths} </td>
+              <td>
+                {cas.timestamp !== undefined ? (
+                  <Moment
+                    utc={false}
+                    parse="YYYY-DD-MM"
+                    format={"MMMM Do YYYY"}
+                  >
+                    {cas.timestamp.slice(0, 10)}
+                  </Moment>
+                ) : (
+                  <span>No recent update</span>
+                )}
+              </td>
+            </tr>
+          )
+        }
+      })
     )
-  }, [data])
+  }, [selectedIndex, data])
 
   return (
     <div>
@@ -151,12 +162,17 @@ const CountrySearch = () => {
             </thead>{" "}
             <tbody> {countryData} </tbody>{" "}
           </table>{" "}
-          <button className="backToTop" onClick={newSearch}>
-            New Search
-          </button>
-          {/* <p id="recommendations_link" onClick={() => showRecommendations()}>
-            TRAVEL RECOMMENDATIONS
-          </p> */}
+          <div id="search-buttons-container">
+            <button className="backToTop" onClick={() => selectEntries("prev")}>
+              Prev{" "}
+            </button>{" "}
+            <button className="backToTop" onClick={newSearch}>
+              New Search
+            </button>
+            <button className="backToTop" onClick={() => selectEntries("next")}>
+              Next{" "}
+            </button>{" "}
+          </div>
         </div>
       ) : errormsg === true && showsearch === false ? (
         <div className="notvalidcountry">
@@ -172,10 +188,6 @@ const CountrySearch = () => {
           </div>
         </div>
       ) : null}
-
-      {/* {showRecs && (
-        <Travelrec travelData={travelData} closeRecs={showRecommendations} />
-      )} */}
     </div>
   )
 }
