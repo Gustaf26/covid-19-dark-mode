@@ -45,6 +45,7 @@ const Home = () => {
   const [chart2InUse, setChart2InUse] = useState()
   const [categoriesLoaded, setCategoriesLoaded] = useState(false)
   const [selectedDiagram, setSelectedDiagram] = useState(0)
+  const [statsYears, setYear] = useState([2020, 2021, 2022])
 
   useEffect(() => {
     setStatsConfigCassualties({
@@ -239,7 +240,7 @@ const Home = () => {
     let today = new Date()
     let year = today.getFullYear()
     let month = today.getMonth()
-    let day = today.getDay()
+    let day = today.getDate()
 
     if (month < 10) {
       month = "0" + month.toString()
@@ -306,7 +307,12 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div id="stats-container">
+      <select id="years-labels">
+        {statsYears.map(year => {
+          return <option className="statsYear">{year}</option>
+        })}
+      </select>
       <div id="home-charts">
         <button
           className="diagram-but prev"
