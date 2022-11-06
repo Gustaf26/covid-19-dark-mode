@@ -14,20 +14,13 @@ function App() {
   const [warning, setWarning] = useState(true)
   const [showmenu, setMenu] = useState(true)
 
-  const closeWarning = () => {
-    setWarning(false)
-  }
-  const openwarning = () => {
-    setWarning(true)
-  }
-
-  useEffect(() => {
-    if (window.innerWidth > 1000) {
-      openwarning()
-    } else {
-      closeWarning()
-    }
-  })
+  // useEffect(() => {
+  //   if (window.innerWidth > 1000) {
+  //     openwarning()
+  //   } else {
+  //     closeWarning()
+  //   }
+  // })
 
   return (
     <MenuContext.Provider
@@ -39,7 +32,7 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
-            <Navbar closeWarn={closeWarning} openWarn={openwarning} />
+            <Navbar />
           </header>
           <div
             className="container"

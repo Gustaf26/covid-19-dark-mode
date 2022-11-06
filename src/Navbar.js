@@ -14,10 +14,10 @@ const Navbar = props => {
   const [bread, setBread] = useState([])
   const [outbreak, setOutbreakMsgs] = useState()
 
-  const nollstall = () => {
-    setBread([])
-    props.reopenadvice()
-  }
+  // const nollstall = () => {
+  //   setBread([])
+  //   props.reopenadvice()
+  // }
 
   const getHamburger = () => {
     if (window.innerWidth < 1100) {
@@ -117,9 +117,9 @@ const Navbar = props => {
         </button>
       )}
 
-      {bread.length ? (
+      {/* {bread.length ? (
         <Breadcrumbs update={() => nollstall()} actualbread={bread} />
-      ) : null}
+      ) : null} */}
     </div>
   )
 }

@@ -61,7 +61,7 @@ const Home = () => {
             loop: true,
           },
         },
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         responsive: false,
         plugins: {
           title: {
@@ -113,7 +113,7 @@ const Home = () => {
             loop: true,
           },
         },
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         responsive: false,
         plugins: {
           title: {
@@ -155,6 +155,7 @@ const Home = () => {
         setChart2InUse(chart)
       }
     })
+    resizeCanvas()
   }, [statsConfigCassualties, statsConfigConfirmed, statsConfigrecovered])
 
   useEffect(() => {
@@ -195,6 +196,35 @@ const Home = () => {
       ],
     })
   }, [categoriesLoaded])
+
+  const resizeCanvas = () => {
+    let allCanvas = document.getElementsByClassName("chart")
+    allCanvas = [...allCanvas]
+    allCanvas.map(canvas => {
+      canvas.style.height =
+        window.innerWidth <= 400
+          ? "45vh"
+          : window.innerWidth <= 600
+          ? "40vh"
+          : window.innerWidth <= 1100
+          ? "40vh"
+          : "50vh"
+      canvas.style.width =
+        window.innerWidth <= 400
+          ? "80vw"
+          : window.innerWidth <= 600
+          ? "90vw"
+          : window.innerWidth <= 1100
+          ? "50vw"
+          : "35vw"
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      resizeCanvas()
+    })
+  })
 
   const sortData = totalData => {
     let sortedData = totalData.sort((a, b) => {
@@ -318,31 +348,31 @@ const Home = () => {
           className="diagram-but prev"
           onClick={() => selectDiagram("prev")}
         >
-          {window.innerWidth < 600 ? "<" : "Prev"}
+          {"<"}
         </button>
         <canvas
           id="myChart0"
           className={selectedDiagram == 0 ? "selected chart" : "chart"}
-          width={window.innerWidth < 1000 ? "500" : "900"}
-          height="500"
+          // width={window.innerWidth < 1000 ? "500" : "900"}
+          // height="500"
         ></canvas>
         <canvas
           id="myChart1"
           className={selectedDiagram == 1 ? "selected chart" : "chart"}
-          width={window.innerWidth < 1000 ? "500" : "900"}
-          height="500"
+          // width={window.innerWidth < 1000 ? "500" : "900"}
+          // height="500"
         ></canvas>
         <canvas
           id="myChart2"
           className={selectedDiagram == 2 ? "selected chart" : "chart"}
-          width={window.innerWidth < 1000 ? "600" : "900"}
-          height="500"
+          // width={window.innerWidth < 1000 ? "600" : "900"}
+          // height="500"
         ></canvas>
         <button
           className="diagram-but next"
           onClick={() => selectDiagram("next")}
         >
-          {window.innerWidth < 600 ? ">" : "Next"}
+          {">"}
         </button>
       </div>
     </div>
