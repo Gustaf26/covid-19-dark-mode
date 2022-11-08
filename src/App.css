@@ -286,7 +286,6 @@ span.advice-highlights {
   position: absolute;
   top: 48%;
   border-radius: 5px;
-  /* border: 2px solid rgba(92, 84, 135, 0.8); */
   font-size: 1.8em;
   font-weight: bolder;
   background-color: rgb(191, 183, 238, 0);
@@ -295,8 +294,6 @@ span.advice-highlights {
 }
 
 .openbtn:hover {
-  /* background-color: rgba(92, 84, 135, 0.8); */
-  /* color: rgb(191, 183, 238); */
   border: 1px solid rgb(191, 183, 238);
 }
 
@@ -803,27 +800,6 @@ footer {
     width: 98vw !important;
   }
 
-  .diagram-but.prev {
-    position: absolute;
-    left: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
-  }
-  .diagram-but.next {
-    position: absolute;
-    right: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
-  }
-  .diagram-but:hover {
-    color: #875475;
-    background-color: #dcb6f1;
-  }
-
   /*Country search*/
 
   .country_search {
@@ -972,27 +948,6 @@ footer {
     width: 95vw !important;
   }
 
-  .diagram-but.prev {
-    position: absolute;
-    left: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
-  }
-  .diagram-but.next {
-    position: absolute;
-    right: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
-  }
-  .diagram-but:hover {
-    color: #875475;
-    background-color: #dcb6f1;
-  }
-
   /*COUNTRY SEARCH*/
 
   #countrymaincard {
@@ -1078,24 +1033,6 @@ footer {
     font-size: small;
   }
 
-  .diagram-but.prev {
-    position: absolute;
-    left: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
-  }
-
-  .diagram-but.next {
-    position: absolute;
-    right: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
-  }
-
   th,
   td {
     font-size: 0.8em;
@@ -1153,24 +1090,6 @@ footer {
     border: 1px dotted rgb(51, 47, 75);
     color: white;
     margin: 0 auto;
-  }
-
-  .diagram-but.prev {
-    position: absolute;
-    left: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
-  }
-
-  .diagram-but.next {
-    position: absolute;
-    right: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
   }
 
   th,
@@ -1273,24 +1192,6 @@ footer {
   ul#initiallist li {
     padding: 1rem;
     color: black;
-  }
-
-  .diagram-but.prev {
-    position: absolute;
-    left: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
-  }
-
-  .diagram-but.next {
-    position: absolute;
-    right: 2%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: xx-large;
-    color: #dcb6f1;
   }
 
   th,
