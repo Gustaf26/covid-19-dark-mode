@@ -7,7 +7,7 @@ Chart.register(defaults.color)
 Chart.defaults.color = "#bfb7ee"
 Chart.defaults.font = {
   family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-  size: 15,
+  size: 11,
   style: "normal",
   lineHeight: 1,
   weight: null,
@@ -217,6 +217,8 @@ const Home = () => {
           : window.innerWidth <= 1100
           ? "50vw"
           : "35vw"
+
+      canvas.font = window.innerWidth >= 1100 ? "12" : "15"
     })
   }
 
@@ -227,6 +229,7 @@ const Home = () => {
   })
 
   const sortData = totalData => {
+    alert("Hello")
     let sortedData = totalData.sort((a, b) => {
       return new Date(a[0].data.date) - new Date(b[0].data.date)
     })
@@ -258,7 +261,8 @@ const Home = () => {
     }, 2000)
   }
 
-  useEffect(() => {
+  const fetchRawData = newyear => {
+    alert(newyear)
     const options = {
       method: "GET",
       headers: {
@@ -266,11 +270,10 @@ const Home = () => {
         "X-RapidAPI-Host": "covid-19-statistics.p.rapidapi.com",
       },
     }
-
     let today = new Date()
-    let year = today.getFullYear()
-    let month = today.getMonth()
+    let month = newyear == 2022 ? today.getMonth() : 12
     let day = today.getDate()
+    let year = newyear
 
     if (month < 10) {
       month = "0" + month.toString()
@@ -279,39 +282,49 @@ const Home = () => {
       day = "0" + day.toString()
     }
 
-    labels.map((label, i) => {
-      if (i < month) {
-        let ind = i + 1
-        if (ind < 10) {
-          ind = "0" + ind.toString()
-        }
+    setData([])
+    setFinnished(false)
+    setCategoriesLoaded(false)
 
-        fetch(
-          `https://covid-19-statistics.p.rapidapi.com/reports/total?date=${year}-${ind}-${day}`,
-          options
-        )
-          .then(response => response.json())
-          .then(response => {
-            let monthData = []
-            monthData.push(response)
-            setData(prev => {
-              if (prev !== undefined) {
-                return [...prev, monthData]
-              } else {
-                return [monthData]
+    setTimeout(() => {
+      labels.map((label, i) => {
+        if (i < month) {
+          let ind = i + 1
+          if (ind < 10) {
+            ind = "0" + ind.toString()
+          }
+
+          fetch(
+            `https://covid-19-statistics.p.rapidapi.com/reports/total?date=${year}-${ind}-${day}`,
+            options
+          )
+            .then(response => response.json())
+            .then(response => {
+              let monthData = []
+              monthData.push(response)
+              setData(prev => {
+                if (prev !== undefined) {
+                  return [...prev, monthData]
+                } else {
+                  return [monthData]
+                }
+              })
+              if (Number(i + 1) == Number(month)) {
+                setTimeout(() => {
+                  setFinnished(true)
+                  return
+                }, 1000)
               }
             })
-            if (Number(i + 1) == Number(month)) {
-              setTimeout(() => {
-                setFinnished(true)
-                return
-              }, 1000)
-            }
-          })
-          .catch(err => console.error(err))
-      }
-    })
-    selectDiagram("init")
+            .catch(err => console.error(err))
+        }
+      })
+      selectDiagram("init")
+    }, 1500)
+  }
+
+  useEffect(() => {
+    fetchRawData(2022)
   }, [])
 
   useEffect(() => {
@@ -338,9 +351,20 @@ const Home = () => {
 
   return (
     <div id="stats-container">
-      <select id="years-labels">
+      <select
+        id="years-labels"
+        defaultValue={2022}
+        onChange={e => fetchRawData(e.target.value)}
+      >
         {statsYears.map(year => {
-          return <option className="statsYear">{year}</option>
+          return (
+            <option
+              className="statsYear"
+              selected={year === 2022 ? true : false}
+            >
+              {year}
+            </option>
+          )
         })}
       </select>
       <div id="home-charts">

@@ -14,13 +14,18 @@ function App() {
   const [warning, setWarning] = useState(true)
   const [showmenu, setMenu] = useState(true)
 
-  // useEffect(() => {
-  //   if (window.innerWidth > 1000) {
-  //     openwarning()
-  //   } else {
-  //     closeWarning()
-  //   }
-  // })
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (showmenu === true) {
+        setMenu(false)
+      }
+      document.getElementById("container").addEventListener("click", () => {
+        if (showmenu === true) {
+          setMenu(false)
+        }
+      })
+    })
+  })
 
   return (
     <MenuContext.Provider
@@ -36,6 +41,7 @@ function App() {
           </header>
           <div
             className="container"
+            id="container"
             onClick={
               window.innerWidth < 1100
                 ? () => (showmenu === true ? setMenu(false) : null)
