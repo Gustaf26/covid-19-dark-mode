@@ -229,7 +229,6 @@ const Home = () => {
   })
 
   const sortData = totalData => {
-    alert("Hello")
     let sortedData = totalData.sort((a, b) => {
       return new Date(a[0].data.date) - new Date(b[0].data.date)
     })
@@ -258,11 +257,10 @@ const Home = () => {
     })
     setTimeout(() => {
       setCategoriesLoaded(true)
-    }, 2000)
+    }, 1500)
   }
 
   const fetchRawData = newyear => {
-    alert(newyear)
     const options = {
       method: "GET",
       headers: {
@@ -285,6 +283,9 @@ const Home = () => {
     setData([])
     setFinnished(false)
     setCategoriesLoaded(false)
+    setCassualties([])
+    setRecovered([])
+    setConfirmed([])
 
     setTimeout(() => {
       labels.map((label, i) => {
@@ -320,7 +321,7 @@ const Home = () => {
         }
       })
       selectDiagram("init")
-    }, 1500)
+    }, 1000)
   }
 
   useEffect(() => {
