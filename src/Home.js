@@ -195,7 +195,7 @@ const Home = () => {
         },
       ],
     })
-  }, [categoriesLoaded])
+  }, [confirmed, recovered, cassualties])
 
   const resizeCanvas = () => {
     let allCanvas = document.getElementsByClassName("chart")
@@ -255,9 +255,6 @@ const Home = () => {
         }
       })
     })
-    setTimeout(() => {
-      setCategoriesLoaded(true)
-    }, 1500)
   }
 
   const fetchRawData = newyear => {
