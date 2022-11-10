@@ -273,7 +273,7 @@ const Home = () => {
     if (month < 10) {
       month = "0" + month.toString()
     }
-    if (day[0] !== 1 && day[0] !== 2) {
+    if (day.toString().length < 2) {
       day = "0" + day.toString()
     }
 
