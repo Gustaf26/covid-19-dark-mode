@@ -288,7 +288,7 @@ span.advice-highlights {
   border-radius: 5px;
   font-size: 1.8em;
   font-weight: bolder;
-  background-color: rgb(191, 183, 238, 0);
+  background-color: rgba(191, 183, 238, 0);
   color: rgb(191, 183, 238);
   padding: 0.25rem 0.75rem 0.25rem 0.75rem;
 }
