@@ -49,7 +49,7 @@ const Home = () => {
 
   useEffect(() => {
     setStatsConfigCassualties({
-      type: "radar",
+      type: "line",
       data: casData,
       options: {
         animations: {
@@ -61,7 +61,7 @@ const Home = () => {
             loop: true,
           },
         },
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         responsive: false,
         plugins: {
           title: {
@@ -72,6 +72,7 @@ const Home = () => {
           legend: {
             labels: { color: "#b2abeb" },
           },
+          tooltip: { position: "nearest" },
         },
       },
     })
@@ -170,7 +171,7 @@ const Home = () => {
           backgroundColor: "#3f3c57e4",
           pointBackgroundColor: "rgb(191, 183, 238)",
           pointBorderColor: "rgba(191, 183, 238, 0)",
-          pointHitRadius: "8",
+          pointHitRadius: "30",
           pointBorderColor: "#fff",
           pointHoverBackgroundColor: "#fff",
           pointHoverBorderColor: "rgb(54, 162, 235)",
@@ -231,7 +232,7 @@ const Home = () => {
         window.innerWidth <= 400
           ? "80vw"
           : window.innerWidth <= 600
-          ? "90vw"
+          ? "70vw"
           : window.innerWidth <= 1100
           ? "50vw"
           : "35vw"
