@@ -5,14 +5,14 @@ import "react-slideshow-image/dist/styles.css"
 Chart.register(...registerables)
 Chart.register(defaults.color)
 Chart.defaults.color = "#bfb7ee"
-Chart.defaults.font = {
-  family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-  size: 11,
-  style: "normal",
-  lineHeight: 1,
-  weight: null,
-  color: "#3e0f75",
-}
+// Chart.defaults.font = {
+//   family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+//   size: 11,
+//   style: "normal",
+//   lineHeight: 1,
+//   weight: null,
+//   color: "#3e0f75",
+// }
 
 const Home = () => {
   const [fetchFinnished, setFinnished] = useState(false)
@@ -68,9 +68,17 @@ const Home = () => {
             display: true,
             text: "Covid-19 global stats",
             color: "#b2abeb",
+            font: {
+              size: 10,
+            },
           },
           legend: {
-            labels: { color: "#b2abeb" },
+            labels: {
+              color: "#b2abeb",
+              font: {
+                size: 9,
+              },
+            },
           },
           tooltip: { position: "nearest" },
         },
@@ -219,25 +227,46 @@ const Home = () => {
   const resizeCanvas = () => {
     let allCanvas = document.getElementsByClassName("chart")
     allCanvas = [...allCanvas]
-    allCanvas.map(canvas => {
-      canvas.style.height =
-        window.innerWidth <= 400
-          ? "45vh"
-          : window.innerWidth <= 600
-          ? "40vh"
-          : window.innerWidth <= 1100
-          ? "40vh"
-          : "50vh"
-      canvas.style.width =
-        window.innerWidth <= 400
-          ? "80vw"
-          : window.innerWidth <= 600
-          ? "70vw"
-          : window.innerWidth <= 1100
-          ? "50vw"
-          : "35vw"
+    allCanvas.map((canvas, i) => {
+      if (i === 0) {
+        canvas.style.height =
+          window.innerWidth <= 400
+            ? "35vh"
+            : window.innerWidth <= 600
+            ? "25vh"
+            : window.innerWidth <= 1100
+            ? "30vh"
+            : "30vh"
+        canvas.style.width =
+          window.innerWidth <= 400
+            ? "80vw"
+            : window.innerWidth <= 600
+            ? "80vw"
+            : window.innerWidth <= 1100
+            ? "55vw"
+            : "35vw"
 
-      canvas.font = window.innerWidth >= 1100 ? "12" : "15"
+        canvas.font = window.innerWidth >= 1100 ? "12" : "15"
+      } else {
+        canvas.style.height =
+          window.innerWidth <= 400
+            ? "45vh"
+            : window.innerWidth <= 600
+            ? "40vh"
+            : window.innerWidth <= 1100
+            ? "40vh"
+            : "50vh"
+        canvas.style.width =
+          window.innerWidth <= 400
+            ? "80vw"
+            : window.innerWidth <= 600
+            ? "70vw"
+            : window.innerWidth <= 1100
+            ? "50vw"
+            : "35vw"
+
+        canvas.font = window.innerWidth >= 1100 ? "12" : "15"
+      }
     })
   }
 
