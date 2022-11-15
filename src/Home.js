@@ -49,7 +49,7 @@ const Home = () => {
 
   useEffect(() => {
     setStatsConfigCassualties({
-      type: "line",
+      type: "radar",
       data: casData,
       options: {
         animations: {
@@ -228,45 +228,45 @@ const Home = () => {
     let allCanvas = document.getElementsByClassName("chart")
     allCanvas = [...allCanvas]
     allCanvas.map((canvas, i) => {
-      if (i === 0) {
-        canvas.style.height =
-          window.innerWidth <= 400
-            ? "35vh"
-            : window.innerWidth <= 600
-            ? "25vh"
-            : window.innerWidth <= 1100
-            ? "30vh"
-            : "30vh"
-        canvas.style.width =
-          window.innerWidth <= 400
-            ? "80vw"
-            : window.innerWidth <= 600
-            ? "80vw"
-            : window.innerWidth <= 1100
-            ? "55vw"
-            : "35vw"
+      // if (i === 0) {
+      //   canvas.style.height =
+      //     window.innerWidth <= 400
+      //       ? "35vh"
+      //       : window.innerWidth <= 600
+      //       ? "25vh"
+      //       : window.innerWidth <= 1100
+      //       ? "30vh"
+      //       : "30vh"
+      //   canvas.style.width =
+      //     window.innerWidth <= 400
+      //       ? "80vw"
+      //       : window.innerWidth <= 600
+      //       ? "80vw"
+      //       : window.innerWidth <= 1100
+      //       ? "55vw"
+      //       : "35vw"
 
-        canvas.font = window.innerWidth >= 1100 ? "12" : "15"
-      } else {
-        canvas.style.height =
-          window.innerWidth <= 400
-            ? "45vh"
-            : window.innerWidth <= 600
-            ? "40vh"
-            : window.innerWidth <= 1100
-            ? "40vh"
-            : "50vh"
-        canvas.style.width =
-          window.innerWidth <= 400
-            ? "80vw"
-            : window.innerWidth <= 600
-            ? "70vw"
-            : window.innerWidth <= 1100
-            ? "50vw"
-            : "35vw"
+      //   canvas.font = window.innerWidth >= 1100 ? "12" : "15"
+      // } else {
+      canvas.style.height =
+        window.innerWidth <= 400
+          ? "45vh"
+          : window.innerWidth <= 600
+          ? "40vh"
+          : window.innerWidth <= 1100
+          ? "40vh"
+          : "50vh"
+      canvas.style.width =
+        window.innerWidth <= 400
+          ? "80vw"
+          : window.innerWidth <= 600
+          ? "70vw"
+          : window.innerWidth <= 1100
+          ? "50vw"
+          : "35vw"
 
-        canvas.font = window.innerWidth >= 1100 ? "12" : "15"
-      }
+      canvas.font = window.innerWidth >= 1100 ? "12" : "15"
+      // }
     })
   }
 

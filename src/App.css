@@ -135,7 +135,7 @@ p {
   height: 60vh;
   padding: 0 3rem;
   margin: -1% auto;
-  background-color: rgba(92, 84, 135, 0.8);
+  background-color: rgba(92, 84, 135, 0.5);
   color: rgb(240, 236, 236);
   border-radius: 5px;
   z-index: 1;
