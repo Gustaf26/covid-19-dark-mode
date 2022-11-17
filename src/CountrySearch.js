@@ -132,7 +132,7 @@ const CountrySearch = () => {
   }, [selectedIndex, data])
 
   return (
-    <div>
+    <>
       {showsearch === true ? (
         <div className="country_search">
           <h6>ENTER COUNTRY NAME (Excepting China and the US)</h6>
@@ -188,7 +188,7 @@ const CountrySearch = () => {
           </div>
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
 
