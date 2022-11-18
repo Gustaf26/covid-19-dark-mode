@@ -793,8 +793,8 @@ footer {
     color: black;
     justify-content: space-evenly;
     margin-top: 0;
-    margin-left: -10px;
-    width: 102vw;
+    margin-left: -15px;
+    width: 102%;
     /* margin-left: 40%; */
     z-index: 11000;
     height: 250%;
