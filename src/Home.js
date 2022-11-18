@@ -1,18 +1,9 @@
 import React, { useEffect, useState, useRef } from "react"
-import Moment from "react-moment"
 import { Chart, registerables, plugins, defaults } from "chart.js"
 import "react-slideshow-image/dist/styles.css"
 Chart.register(...registerables)
 Chart.register(defaults.color)
 Chart.defaults.color = "#bfb7ee"
-// Chart.defaults.font = {
-//   family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-//   size: 11,
-//   style: "normal",
-//   lineHeight: 1,
-//   weight: null,
-//   color: "#3e0f75",
-// }
 
 const Home = () => {
   const [fetchFinnished, setFinnished] = useState(false)
@@ -228,26 +219,6 @@ const Home = () => {
     let allCanvas = document.getElementsByClassName("chart")
     allCanvas = [...allCanvas]
     allCanvas.map((canvas, i) => {
-      // if (i === 0) {
-      //   canvas.style.height =
-      //     window.innerWidth <= 400
-      //       ? "35vh"
-      //       : window.innerWidth <= 600
-      //       ? "25vh"
-      //       : window.innerWidth <= 1100
-      //       ? "30vh"
-      //       : "30vh"
-      //   canvas.style.width =
-      //     window.innerWidth <= 400
-      //       ? "80vw"
-      //       : window.innerWidth <= 600
-      //       ? "80vw"
-      //       : window.innerWidth <= 1100
-      //       ? "55vw"
-      //       : "35vw"
-
-      //   canvas.font = window.innerWidth >= 1100 ? "12" : "15"
-      // } else {
       canvas.style.height =
         window.innerWidth <= 400
           ? "45vh"
@@ -266,7 +237,6 @@ const Home = () => {
           : "35vw"
 
       canvas.font = window.innerWidth >= 1100 ? "12" : "15"
-      // }
     })
   }
 
@@ -423,20 +393,14 @@ const Home = () => {
         <canvas
           id="myChart0"
           className={selectedDiagram == 0 ? "selected chart" : "chart"}
-          // width={window.innerWidth < 1000 ? "500" : "900"}
-          // height="500"
         ></canvas>
         <canvas
           id="myChart1"
           className={selectedDiagram == 1 ? "selected chart" : "chart"}
-          // width={window.innerWidth < 1000 ? "500" : "900"}
-          // height="500"
         ></canvas>
         <canvas
           id="myChart2"
           className={selectedDiagram == 2 ? "selected chart" : "chart"}
-          // width={window.innerWidth < 1000 ? "600" : "900"}
-          // height="500"
         ></canvas>
         <button
           className="diagram-but next"
