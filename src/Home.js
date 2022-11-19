@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react"
-import { Chart, registerables, plugins, defaults } from "./chartjs/dist/chart"
+import { Chart, registerables, plugins, defaults } from "chart.js"
 import "react-slideshow-image/dist/styles.css"
 Chart.register(...registerables)
 Chart.register(defaults.color)
