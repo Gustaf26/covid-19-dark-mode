@@ -45,7 +45,7 @@ const Home = () => {
       options: {
         animations: {
           tension: {
-            duration: 3000,
+            duration: 3001,
             easing: "linear",
             from: 1,
             to: 0,
